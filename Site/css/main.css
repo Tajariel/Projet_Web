@@ -1,15 +1,22 @@
+/*
+    General
+ */
 * {
 
 }
+
 
 img {
     width:100px;
 }
 
+
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
+
 
 header {
     display:flex;
@@ -20,41 +27,72 @@ header {
     border:3px solid rgba(255,255,0,255);
 }
 
+
 header div {
     display:flex;
 }
 
-.right {
-    border:3px solid black;
-    width:60%;
-    align-items:start;
-}
-
-.left {
-    border:3px solid black;
-    width:40%;
-    align-items:end;
-}
-
-#page {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-}
 
 nav {
     background-color: rgba(100,250,250,255);
     border:3px solid rgba(100,250,250,255);
     width: 200px;
 }
+/*
+    Fin_General
+ */
+
+
+/*
+    Classes
+ */
+.right {
+    border:3px solid black;
+    width:100%;
+    align-items:start;
+}
+
+
+.left {
+    border:3px solid black;
+    width:100%;
+    align-items:end;
+}
+/*
+    Fin_Classes
+ */
+
+
+/*
+    ID
+ */
+#page {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
 
 #main_content {
     width: 100%;
     border:3px solid black;
 }
 
+
 #vanessa {
     width: 15%;
     background-color: rgba(200,150,0,255);
     border:3px solid rgba(200,150,0,255);
 }
+
+
+#center_square {
+    width: 500px;
+    height: 800px;
+
+    border:3px solid black;
+    background-color: rgba(200,200,200,200);
+}
+/*
+    Fin_ID
+ */
