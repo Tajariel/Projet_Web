@@ -34,7 +34,7 @@
                         <form action="../php/pass_verify.php" method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
-                            <input type="submit" name="action" id="connecter" value="Se connecter">
+                            <input type="submit" name="action" id="connecter" value="connexion">
                         </form>
                         <a href="../php/create_user.php"><button>Créer un compte</button></a>
             ';
