@@ -3,19 +3,27 @@
     require '../include/part.php';
 ?>
 
-<?php page_head('Se connecter','main.css'); ?>
+<?php
+    session_start();
+    page_head('Se connecter','main.css');
+?>
 
 
 <body>
-    <?php page_header(); ?>
+    <?php page_header();
+    if(isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+    ?>
 
     <div id="center_square">
         <form action="manage_user.php" method="post">
             <p><label for="pseudo">Pseudo :</label></br>
                 <input type="text" name="pseudo" placeholder="Pseudo" required></p>
 
-            <p><label for="mail">E-mail :</label></br>
-                <input type="text" name="mail" placeholder="E-mail" required></p>
+            <p><label for="email">E-mail :</label></br>
+                <input type="text" name="email" placeholder="E-mail" required></p>
 
             <p><label for="password">Mot de passe :</label></br>
                 <input type="password" name="password" placeholder="Mot de passe" required></p>

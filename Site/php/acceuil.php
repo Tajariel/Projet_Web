@@ -6,13 +6,16 @@
 
     if(!isset($_SESSION['suid'])){
         echo 'pas connecté </br>';
-        echo '<a href="connexion.php"><button type="button"> connexion</button></a>';
+        echo '<form action="connexion.php" method="post"><input type="submit" name="action" value="connexion"/></form>';
     } else {
         echo 'Bonjour, '. $_SESSION['pseudo'].'</br>';
-        echo '<button type="button"> <a href="manage_user.php">deconnexion</a></button>';
+        echo '<form action="manage_user.php" method="post"><input type="submit" name ="action" value="deconnexion"/></form>';
     }
 
-
+    if(isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
 ?>
 
 <?php
