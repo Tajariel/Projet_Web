@@ -31,7 +31,7 @@
         if(true) // si déconnecter
         {
             echo '
-                        <form action="../php/pass_verify.php" method="post">
+                        <form action="../php/manage_user.php" method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
                             <input type="submit" name="action" id="connecter" value="connexion">
