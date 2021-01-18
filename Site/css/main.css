@@ -2,7 +2,7 @@
     General
  */
 * {
-
+    box-sizing: border-box;
 }
 
 
@@ -27,7 +27,6 @@ header {
     border:3px solid rgba(255,255,0,255);
 }
 
-
 header div {
     display:flex;
 }
@@ -47,16 +46,72 @@ nav {
     Classes
  */
 .right {
-    border:3px solid black;
+    display: flex;
     width:100%;
     align-items:start;
 }
 
+.right *{
+    height : 100%;
+    border : none;
+}
 
 .left {
-    border:3px solid black;
+    display: flex;
     width:100%;
     align-items:end;
+}
+
+.left *{
+    height: 100%;
+    border : none;
+}
+
+.intext {
+    padding: 5px;
+
+    border-radius: 7px;
+    border-color:darkgrey;
+}
+
+.intext:hover {
+    border-color:orange;
+}
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+
+    width: 30px;
+    height: 30px;
+}
+
+.incheck {
+    opacity: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+
+    background-color: white;
+    border: 2px solid lightgrey;
+    border-radius: 2px;
+}
+
+.checkmark:hover {
+    background-color: rgba(250,250,250);
+    border-color: orange;
+}
+
+.incheck:checked ~ .checkmark{
+    background-color: deepskyblue;
+    border-color: darkslateblue;
 }
 /*
     Fin_Classes
@@ -87,11 +142,16 @@ nav {
 
 
 #center_square {
-    width: 500px;
+    position: relative;
+    width: 800px;
     height: 800px;
 
-    border:3px solid black;
-    background-color: rgba(200,200,200,200);
+    border:2px solid rgba(200,200,200,250);
+    border-radius: 20px;
+
+    background-color: rgba(240,240,240,250);
+
+    padding: 50px;
 }
 /*
     Fin_ID
