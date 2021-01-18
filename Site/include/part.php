@@ -31,10 +31,10 @@
         if(true) // si déconnecter
         {
             echo '
-                        <form action="../php/manage_user.php" method="post">
-                            <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
-                            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-                            <input type="submit" name="action" id="connecter" value="connexion">
+                        <form action="../php/pass_verify.php" method="post">
+                            <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
+                            <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
+                            <input type="submit" name="action" id="connecter" value="Se connecter">
                         </form>
                         <a href="../php/create_user.php"><button>Créer un compte</button></a>
             ';
@@ -53,6 +53,18 @@
         
         
             </header>
+        ';
+    }
+
+    function customCheckBox($name,$bool) {
+        echo '
+            <label class="container"><input class="incheck" type="checkbox" name="'.$name.'" ';
+
+        if($bool==true)
+            echo 'required';
+
+        echo '>
+            <span class="checkmark"></span></label>
         ';
     }
 ?>
