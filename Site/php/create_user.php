@@ -10,7 +10,7 @@
     <?php page_header(); ?>
 
     <div id="center_square">
-        <form action="pass_verify.php" method="post">
+        <form action="manage_user.php" method="post">
             <p><label for="pseudo">Pseudo :</label></br>
                 <input type="text" name="pseudo" placeholder="Pseudo" required></p>
 
@@ -25,7 +25,7 @@
 
             <p><label for="conditions">Acceptez les conditions d'utilisations : </label><input type="checkbox" name="conditions" required></p>
 
-            <p><input type="submit" name="action" id="soumettre" value="Soumettre"></p>
+            <p><input type="submit" name="action" id="soumettre" value="creation"></p>
         </form>
     </div>
 </body>

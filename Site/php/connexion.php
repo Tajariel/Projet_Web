@@ -11,8 +11,8 @@
     }
 ?>
 
-<form action="pass_verify.php" method="post">
+<form action="manage_user.php" method="post">
     Pseudo: <input type="text" name="pseudo"><br>
     Mot de Passe :<input type="mdp" name="mdp" "><br>
-    <input type="submit" value="Connexion">
+    <input type="submit" name ="action" value="Connexion">
 </form>

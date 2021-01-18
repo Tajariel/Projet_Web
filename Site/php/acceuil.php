@@ -9,7 +9,7 @@
         echo '<a href="connexion.php"><button type="button"> connexion</button></a>';
     } else {
         echo 'Bonjour, '. $_SESSION['pseudo'].'</br>';
-        echo '<button type="button"> <a href="pass_verify.php">deconnexion</a></button>';
+        echo '<button type="button"> <a href="manage_user.php">deconnexion</a></button>';
     }
 
 
