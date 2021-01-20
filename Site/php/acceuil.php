@@ -4,11 +4,11 @@
 
     echo '<h1>Acceuil</h1></br>';
 
-    if(!isset($_SESSION['suid'])){
-        echo 'pas connecté </br>';
+    if(!isset($_SESSION['connexion']['id_user'])){
+        echo 'Pas connecté </br>';
         echo '<form action="connexion.php" method="post"><input type="submit" name="action" value="connexion"/></form>';
     } else {
-        echo 'Bonjour, '. $_SESSION['pseudo'].'</br>';
+        echo 'Bonjour, '. $_SESSION['connexion']['pseudo'].'</br>';
         echo '<form action="manage_user.php" method="post"><input type="submit" name ="action" value="deconnexion"/></form>';
     }
 
@@ -29,14 +29,25 @@
 
     <?php page_header(); ?>
 
+
+
     <div id="page">
+
         <nav>
             <p>#swag</p>
         </nav>
 
         <section id="main_content">
             <article>
-                <p>Aujourd'hui j'ai swaggé</p>
+
+                <?php
+                if ($_SESSION['connexion']['type'] == 'SUPER_ADMIN')
+                {
+                    echo '<form action= "message.php" method="post"><input type="submit" name ="action" value="Send"/></form>';
+                }
+                ?>
+
+
             </article>
         </section>
 

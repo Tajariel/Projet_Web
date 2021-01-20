@@ -70,16 +70,13 @@ CREATE TABLE `user` (
   `pseudo` varchar(20) NOT NULL,
   `email` varchar(254) NOT NULL,
   `mdp` varchar(128) NOT NULL,
-  `role` varchar(20) NOT NULL
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `pseudo`, `email`, `mdp`, `role`) VALUES
-(1, 'Vanestarre', 'vanestarre@vanestarre.vanestarre', 'vanestarre', 'SUPER_ADMIN'),
-(2, 'Vanefan', 'vanefan@gmail.com', 'vanefan', 'MEMBER');
 
 --
 -- Indexes for dumped tables

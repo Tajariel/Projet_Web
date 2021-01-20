@@ -1,35 +1,43 @@
 <?php
 
-    function connectDb($dsHost, $dbLogin, $dbPass)
+    function connectDb($dbHost,$dbName, $dbLogin, $dbPass, $persist = false)
     {
-        $dbLink = mysqli_connect($dsHost, $dbLogin, $dbPass)
-        or die('Erreur dans la sélection de la base : '.mysqli_connect_error());
+        try{
+            // Connexion à la base de données.
+            $dsn = 'mysql:host='.$dbHost.';dbname='.$dbName;
 
-        return $dbLink;
-    }
 
-    function selectDb($dbLink, $dbBd)
-    {
-        mysqli_select_db($dbLink, $dbBd)
-        or die('Erreur lors de la sélection de la base :'.mysqli_error($dbLink));
-    }
 
-    function queryDb($dbLink, $query)
-    {
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            echo 'Erreur de requête<br/>'; // Affiche le type d'erreur. echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>'; // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
-            exit();
+
+            if($persist = false)
+            {
+                $pdo = new PDO($dsn, $dbLogin,$dbPass);
+            }
+            else
+            {
+                $pdo = new PDO($dsn, $dbLogin,$dbPass,array(PDO::ATTR_PERSISTENT => true));
+            }
+
+
+            // Codage de caractères.
+            $pdo->exec('SET CHARACTER SET utf8');
+
+            // Gestion des erreurs sous forme d'exceptions.
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
         }
 
-        return $dbResult;
+        catch(PDOException$e)
+        {
+            // Affichage de l'erreur.
+            die('Erreur: ' . $e->getMessage());
+        }
+
     }
 
-    function fetchResult($dbResult)
+    function closeDb($pdo)
     {
-        return mysqli_fetch_assoc($dbResult);
+        $pdo = null;
     }
-
-
 
     ?>

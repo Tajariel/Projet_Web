@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['suid'])){
-        unset($_SESSION['suid']);
-        unset($_SESSION['pseudo']);
+    if(isset($_SESSION['connexion']['id_user'])){
+        unset($_SESSION['connexion']['id_user']);
+        unset($_SESSION['connexion']['pseudo']);
         header('Location: acceuil.php');
     } elseif (isset($_SESSION['erreur'])){
         echo $_SESSION['erreur'];

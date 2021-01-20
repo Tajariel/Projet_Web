@@ -1,78 +1,112 @@
 <?php
-
-    session_start();
-
-    $dbLink = mysqli_connect('localhost' , 'root')
-    or die('Erreur dans la connexion a mysqli : '. mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink , 'simp-land_db')
-    or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
+require '../include/base.php';
+session_start();
+//VALEUR DE CONNEXION;
+    $dbHost = 'mysql';
+    $dbName = 'simp-land_db';
+    $dbLogin = 'root';
+    $dbPass = 'mdp_root';
 
 
+
+
+    // CONNEXION A LA BASE
+    $pdo = connectDb($dbHost,$dbName, $dbLogin, $dbPass,true);
+
+
+
+    //ACTION DECONNEXION
     if($_POST['action'] == 'deconnexion'){
-        unset( $_SESSION['suid']);
-        unset( $_SESSION['pseudo']);
-        header('Location: acceuil.php');
+        unset( $_SESSION['connexion']);
+        header('Location: connexion.php');
     }
-    elseif($_POST['action'] == 'connexion'){
 
-        $query = 'SELECT * FROM user WHERE pseudo = \''.$_POST['pseudo'].'\' AND mdp = \''.$_POST['password'].'\'';
+    //ACTION CONNEXION
+    elseif($_POST['action'] == 'connexion') {
 
-        if(! $dbResult = mysqli_query($dbLink, $query)) {
-            $_SESSION['message'] = 'Erreur : ' . mysqli_error($dbLink);
-            header('Location: acceuil.php');
-            return;
+
+        $sql = 'SELECT id_user, pseudo, email, type FROM user WHERE pseudo = :psd AND mdp = :psswd';
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindValue('psd', $_POST['pseudo'], PDO::PARAM_STR);
+        $stmt->bindValue('psswd', $_POST['password'], PDO::PARAM_STR);
+
+        try {
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            if ($stmt->rowCount() == 1) {
+                $result = $stmt->fetch();
+                $_SESSION['connexion'] = $result;
+                header('Location: acceuil.php');
+            }
+
+        } catch (PDOException $e) {
+            echo 'Erreur : ', $e->getMessage(), PHP_EOL;
+            echo 'Requête : ', $sql, PHP_EOL;
+            exit();
         }
 
-        elseif (mysqli_num_rows($dbResult) > 0){
-
-            $_SESSION['suid'] = session_id();
-            $_SESSION['pseudo'] = $_POST['pseudo'];
-            header('Location: acceuil.php');
-            return;
-        }
-        else {
-            $_SESSION['message'] = 'Mauvais identifiants';
-            header('Location: acceuil.php');
-            return;
-        }
+        header('Location: acceuil.php');
     }
     elseif ($_POST['action'] == 'creation'){
 
-        if($_POST['password'] != $_POST['passwordbis']){
-            $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
-            header('Location: create_user.php');
-            return;
+
+
+            try
+            {
+                $sql = 'SELECT pseudo FROM user WHERE pseudo = :pseudo';
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue('pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+                $stmt->execute();
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            }
+            catch(Exception $e)
+            {
+                echo 'Erreur : ', $e->getMessage(), PHP_EOL;
+                echo 'Requête : ', $sql, PHP_EOL;
+                exit();
+            }
+
+            if($_POST['password'] != $_POST['passwordbis'])
+            {
+                $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
+                header('Location: create_user.php');
+                return;
+            }
+
+            if ($stmt->rowCount() != 0)
+            {
+                $_SESSION['message'] = 'Pseudo déjà utilisé';
+                header('Location: create_user.php');
+                return;
+            }
+
+            try
+            {
+                $sql = 'INSERT INTO user (pseudo, email, mdp, type) 
+                        VALUES (:pseudo, :email, :password, \'MEMBER\')';
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue('pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+                $stmt->bindValue('email', $_POST['email'], PDO::PARAM_STR);
+                $stmt->bindValue('password', $_POST['password'], PDO::PARAM_STR);
+
+                $pdo->beginTransaction();
+                $stmt->execute();
+                $pdo->commit();
+
+            }
+            catch (Exception $e) {
+                $pdo->rollBack();
+                echo "Failed: " . $e->getMessage();
+            }
+
+            header('Location: acceuil.php');
         }
-
-        //TODO: vérif si email valide
-
-        $query = 'SELECT * FROM user WHERE pseudo = \''.$_POST['pseudo'].'\'';
-
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            $_SESSION['message'] = 'Erreur : ' . mysqli_error($dbLink);
-            header('Location: create_user.php');
-            return;
-        }
-
-        if(mysqli_num_rows($dbResult) != 0){
-            $_SESSION['message'] = 'Pseudo déjà utilisé';
-            header('Location: create_user.php');
-            return;
-        }
-
-        $query = 'INSERT INTO user (pseudo, email, mdp, role)
-                  VALUES (\''.$_POST['pseudo'].'\', \''.$_POST['email'].'\', \''.$_POST['password'].'\', \'MEMBER\')';
-
-        if(!mysqli_query($dbLink, $query)) {
-            $_SESSION['message'] = 'Erreur : ' . $query;
-            header('Location: create_user.php');
-            return;
-        }
-
-        header('Location: acceuil.php');
-    } else {
+    else
+    {
         echo 'Action non traitée';
     }
 ?>
