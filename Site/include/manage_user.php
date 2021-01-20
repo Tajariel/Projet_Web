@@ -9,8 +9,6 @@ session_start();
         $dbPass = 'mdp_root';
 
 
-
-
     // CONNEXION A LA BASE
         $pdo = connectDb($dbHost,$dbName, $dbLogin, $dbPass,true);
 

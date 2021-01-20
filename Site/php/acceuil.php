@@ -9,7 +9,7 @@
         echo '<form action="connexion.php" method="post"><input type="submit" name="action" value="connexion"/></form>';
     } else {
         echo 'Bonjour, '. $_SESSION['connexion']['pseudo'].'</br>';
-        echo '<form action="manage_user.php" method="post"><input type="submit" name ="action" value="deconnexion"/></form>';
+        echo '<form action="../include/manage_user.php" method="post"><input type="submit" name ="action" value="deconnexion"/></form>';
     }
 
     if(isset($_SESSION['message'])) {
@@ -43,7 +43,7 @@
                 <?php
                 if ($_SESSION['connexion']['type'] == 'SUPER_ADMIN')
                 {
-                    echo '<form action= "message.php" method="post"><input type="submit" name ="action" value="Send"/></form>';
+                    echo '<form action= "../include/message.php" method="post"><input type="submit" name ="action" value="Send"/></form>';
                 }
                 ?>
 

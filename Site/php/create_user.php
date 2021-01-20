@@ -18,7 +18,7 @@
     ?>
 
     <div id="center_square">
-        <form action="manage_user.php" method="post">
+        <form action="../include/manage_user.php" method="post">
             <p><label for="pseudo">Pseudo :</label></br>
                 <input type="text" name="pseudo" placeholder="Pseudo" required></p>
 
