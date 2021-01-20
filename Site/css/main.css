@@ -3,11 +3,13 @@
  */
 * {
     box-sizing: border-box;
+    font-family:"Open Sans", sans-serif;
+    font-size:1em;
 }
 
 
 img {
-    width:100px;
+
 }
 
 
@@ -17,15 +19,23 @@ body {
     justify-content: center;
 }
 
-
 header {
     display:flex;
     justify-content:space-between;
 
+    height: 100px;
 
-    background-color: rgba(255,255,0,255);
-    border:3px solid rgba(255,255,0,255);
+    background: rgb(210,130,210);
+    border-bottom: 5px solid rgb(150,0,150);
 }
+
+
+header * {
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
 
 header div {
     display:flex;
@@ -51,21 +61,13 @@ nav {
     align-items:start;
 }
 
-.right *{
-    height : 100%;
-    border : none;
-}
 
 .left {
     display: flex;
     width:100%;
-    align-items:end;
+    flex-direction: row-reverse;
 }
 
-.left *{
-    height: 100%;
-    border : none;
-}
 
 .intext {
     padding: 5px;
@@ -74,9 +76,11 @@ nav {
     border-color:darkgrey;
 }
 
+
 .intext:hover {
     border-color:orange;
 }
+
 
 .container {
     display: block;
@@ -123,7 +127,7 @@ nav {
  */
 #page {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     height: 100%;
 }
 
@@ -143,8 +147,8 @@ nav {
 
 #center_square {
     position: relative;
-    width: 800px;
-    height: 800px;
+    width: 700px;
+    height: 500px;
 
     border:2px solid rgba(200,200,200,250);
     border-radius: 20px;
@@ -152,7 +156,47 @@ nav {
     background-color: rgba(240,240,240,250);
 
     padding: 50px;
+    margin: 10px;
+}
+
+#logo_site {
+    padding: 5px;
 }
 /*
     Fin_ID
+ */
+
+/*
+    Prioritaire
+ */
+.right *{
+    height : 100%;
+    border : none;
+    border-radius: 0px;
+}
+
+
+.left *{
+    height: 100%;
+    border : none;
+    border-radius: 0px;
+}
+
+
+header .button {
+    background: rgb(220,150,200);
+}
+
+
+header .button:hover {
+    background: rgb(230,140,200);
+}
+
+#logo {
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/*
+    Fin_Prioritaire
  */

@@ -1,57 +1,38 @@
-<?php
+<html>
+    <?php
     /// Include - Require
     require '../include/part.php';
-    session_start();
+    ?>
 
-    var_dump($_SESSION);
-    echo '<h1>Acceuil</h1></br>';
+    <?php page_head('Vannestarre','main.css'); ?>
+    <body>
 
-    if(!isset($_SESSION['connexion']['id_user'])){
-        echo 'Pas connecté </br>';
-        echo '<form action="connexion.php" method="post"><input type="submit" name="action" value="connexion"/></form>';
-    } else {
-        echo 'Bonjour, '. $_SESSION['connexion']['pseudo'].'</br>';
-        echo '<form action="../include/manage_user.php" method="post"><input type="submit" name ="action" value="deconnexion"/></form>';
-    }
+        <?php page_header(); ?>
 
-    if(isset($_SESSION['message'])) {
-        echo $_SESSION['message'];
-        unset($_SESSION['message']);
-    }
-?>
+        <div id="page">
 
+            <nav>
+                <p>#swag</p>
+            </nav>
 
-<?php page_head('Vannestar','main.css'); ?>
+            <section id="main_content">
+                <article>
 
-<body>
-
-    <?php page_header(); ?>
-
-    <div id="page">
-
-        <nav>
-            <p>#swag</p>
-        </nav>
-
-        <section id="main_content">
-            <article>
-
-                <?php
-                if (isset($_SESSION['connexion']['id_user']) && $_SESSION['connexion']['type'] == 'SUPER_ADMIN')
-                {
-                    echo '<form action= "../include/message.php" method="post"><input type="submit" name ="action" value="Send"/></form>';
-                }
-                ?>
+                    <?php
+                    if (isset($_SESSION['connexion']['id_user']) && $_SESSION['connexion']['type'] == 'SUPER_ADMIN')
+                    {
+                        echo '<form action= "../include/message.php" method="post"><input type="submit" name ="action" value="Send"/></form>';
+                    }
+                    ?>
 
 
-            </article>
-        </section>
+                </article>
+            </section>
 
-        <div id="vanessa">
-            <p>Vanessa</p>
+            <div id="vanessa">
+                <p>Vanessa</p>
+            </div>
         </div>
-    </div>
 
-
-
-</body>
+    </body>
+</html>
