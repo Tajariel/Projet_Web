@@ -1,5 +1,7 @@
 <?php
 
+
+
     function connectDb($dbHost,$dbName, $dbLogin, $dbPass, $persist = false)
     {
         try{

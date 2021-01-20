@@ -1,5 +1,6 @@
 <?php
-
+    /// Include - Require
+    require '../include/part.php';
     session_start();
 
     var_dump($_SESSION);
@@ -19,10 +20,6 @@
     }
 ?>
 
-<?php
-    /// Include - Require
-    require '../include/part.php';
-?>
 
 <?php page_head('Vannestar','main.css'); ?>
 
