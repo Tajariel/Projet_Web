@@ -6,10 +6,10 @@ function get_info_conn()
 {
 
     $info_conn = array (
-        "dbHost" => 'mysql',
+        "dbHost" => 'localhost',
         "dbName" => 'simp-land_db',
         "dbLogin" => 'root',
-        "dbPass" => 'mdp_root'
+        "dbPass" => ''
         );
 
         return $info_conn;

@@ -9,8 +9,6 @@
             $dsn = 'mysql:host='.$dbHost.';dbname='.$dbName;
 
 
-
-
             if($persist = false)
             {
                 $pdo = new PDO($dsn, $dbLogin,$dbPass);

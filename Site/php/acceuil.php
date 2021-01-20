@@ -2,7 +2,14 @@
     <?php
     /// Include - Require
     require '../include/part.php';
-    ?>
+    session_start();
+
+    if(isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+
+?>
 
     <?php page_head('Vannestarre','main.css'); ?>
     <body>
