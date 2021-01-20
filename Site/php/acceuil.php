@@ -2,6 +2,7 @@
 
     session_start();
 
+    var_dump($_SESSION);
     echo '<h1>Acceuil</h1></br>';
 
     if(!isset($_SESSION['connexion']['id_user'])){
@@ -29,8 +30,6 @@
 
     <?php page_header(); ?>
 
-
-
     <div id="page">
 
         <nav>
@@ -41,7 +40,7 @@
             <article>
 
                 <?php
-                if ($_SESSION['connexion']['type'] == 'SUPER_ADMIN')
+                if (isset($_SESSION['connexion']['id_user']) && $_SESSION['connexion']['type'] == 'SUPER_ADMIN')
                 {
                     echo '<form action= "../include/message.php" method="post"><input type="submit" name ="action" value="Send"/></form>';
                 }

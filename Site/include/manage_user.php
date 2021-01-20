@@ -1,12 +1,12 @@
 <?php
 require '../include/base.php';
-session_start();
+    session_start();
 
     //VALEUR DE CONNEXION;
-        $dbHost = 'mysql';
+        $dbHost = 'localhost';
         $dbName = 'simp-land_db';
         $dbLogin = 'root';
-        $dbPass = 'mdp_root';
+        $dbPass = '';
 
 
     // CONNEXION A LA BASE
@@ -15,7 +15,7 @@ session_start();
     //ACTION DECONNEXION
         if($_POST['action'] == 'deconnexion'){
             unset( $_SESSION['connexion']);
-            header('Location: accueil.php');
+            header('Location: ../php/acceuil.php');
         }
 
     //ACTION CONNEXION
@@ -37,16 +37,19 @@ session_start();
                 if ($stmt->rowCount() == 1) {
                     $result = $stmt->fetch();
                     $_SESSION['connexion'] = $result;
-                    header('Location: acceuil.php');
+                    header('Location: ../php/acceuil.php');
+                } else {
+                    $_SESSION['message'] = 'Mauvais identifiants';
+                    header('Location: ../php/acceuil.php');
                 }
 
             } catch (PDOException $e) {
-                echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-                echo 'Requête : ', $sql, PHP_EOL;
-                exit();
+                $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
+                $_SESSION['message'] = $_SESSION['message'] .'Requête : '. $sql;
+                header('Location: ../php/acceuil.php');
             }
 
-            header('Location: acceuil.php');
+            header('Location: ../php/acceuil.php');
         }
 
     //ACTION CREATION DE COMPTE
@@ -61,22 +64,22 @@ session_start();
                 }
                 catch(Exception $e)
                 {
-                    echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-                    echo 'Requête : ', $sql, PHP_EOL;
-                    exit();
+                    $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
+                    $_SESSION['message'] = $_SESSION['message'] . 'Requête : '. $sql;
+                    header('Location: ../php/create_user.php');
                 }
 
                 if($_POST['password'] != $_POST['passwordbis'])
                 {
                     $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
-                    header('Location: create_user.php');
+                    header('Location: ../php/create_user.php');
                     return;
                 }
 
                 if ($stmt->rowCount() != 0)
                 {
                     $_SESSION['message'] = 'Pseudo déjà utilisé';
-                    header('Location: create_user.php');
+                    header('Location: ../php/create_user.php');
                     return;
                 }
 
@@ -96,10 +99,11 @@ session_start();
                 }
                 catch (Exception $e) {
                     $pdo->rollBack();
-                    echo "Failed: " . $e->getMessage();
+                    $_SESSION['message'] = "Failed: " . $e->getMessage();
+                    header('Location: ../php/create_user.php');
                 }
 
-                header('Location: acceuil.php');
+                header('Location: ../php/acceuil.php');
             }
         else
         {
