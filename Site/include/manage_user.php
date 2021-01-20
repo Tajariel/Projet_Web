@@ -15,7 +15,7 @@ session_start();
     //ACTION DECONNEXION
         if($_POST['action'] == 'deconnexion'){
             unset( $_SESSION['connexion']);
-            header('Location: connexion.php');
+            header('Location: accueil.php');
         }
 
     //ACTION CONNEXION
