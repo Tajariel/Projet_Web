@@ -19,7 +19,7 @@ session_start();
     //ACTION CONNEXION
         elseif($_POST['action'] == 'connexion') {
 
-            $sql = 'SELECT id_user, pseudo, email, mdp type FROM user WHERE pseudo = :psd';
+            $sql = 'SELECT id_user, pseudo, email, mdp, type FROM user WHERE pseudo = :psd';
 
             $stmt = $pdo->prepare($sql);
 
@@ -30,10 +30,11 @@ session_start();
 
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-                if ($stmt->rowCount() == 1 && password_verify($_POST['password'], $stmt->fetch()['mdp'])) {
+                $result = $stmt->fetch();
 
-                    $result = $stmt->fetch();
-                    unset($result['password']);
+                if ($stmt->rowCount() == 1 && password_verify($_POST['password'], $result['mdp'])) {
+
+                    //unset($result['password']);
                     $_SESSION['connexion'] = $result;
                 } else {
                     $_SESSION['message'] = 'Mauvais identifiants';
@@ -86,10 +87,9 @@ session_start();
                     $stmt = $pdo->prepare($sql);
                     $stmt->bindValue('pseudo', $_POST['pseudo'], PDO::PARAM_STR);
                     $stmt->bindValue('email', $_POST['email'], PDO::PARAM_STR);
-                    $stmt->bindValue('password', password_hash($_POST['password'], PASSWORD_DEFAULT), PDO::PARAM_STR);
+                    $hashedPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $stmt->bindValue('password', $hashedPass, PDO::PARAM_STR);
 
-                    //a supprimer
-                    $_SESSION['message'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
                     $pdo->beginTransaction();
                     $stmt->execute();

@@ -14,7 +14,13 @@
     <?php page_head('Vannestarre','main.css'); ?>
     <body>
 
-        <?php page_header(); ?>
+        <?php page_header();
+
+        if (isset($_SESSION['connexion']['id_user']))
+        {
+            echo 'Bonjour, '.$_SESSION['connexion']['pseudo'];
+        }
+        ?>
 
         <div id="page">
 

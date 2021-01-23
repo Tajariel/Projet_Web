@@ -9,6 +9,7 @@
 
     <body>
     <?php page_header();
+    session_start();
     if(isset($_SESSION['message'])) {
         echo $_SESSION['message'];
         unset($_SESSION['message']);
@@ -17,7 +18,7 @@
 
     <div id="page">
         <div id="center_square">
-            <form action="manage_user.php" method="post">
+            <form action="../include/manage_user.php" method="post">
                 <p><label for="pseudo">Pseudo</label></br>
                     <input class="intext" type="text" name="pseudo" placeholder="Pseudo" required></p>
 
@@ -32,7 +33,7 @@
 
                 <p><label for="conditions">Acceptez les conditions d'utilisations : <?php customCheckBox("conditions",true)?></label></p>
 
-                <p><input class="button" type="submit" name="action" id="soumettre" value="Créer un compte"></p>
+                <p><input class="button" type="submit" name="action" id="soumettre" value="creation"></p>
             </form>
         </div>
     </div>

@@ -31,10 +31,10 @@ function page_header() {
     if(true) // si déconnecter
     {
         echo '
-                        <form action="../php/manage_user.php" method="post">
+                        <form action="../include/manage_user.php" method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
-                            <input class="button" type="submit" name="action" id="connecter" value="Connexion">
+                            <input class="button" type="submit" name="action" id="connecter" value="connexion">
                         </form>
                         <a href="../php/create_user.php"><button class="button">Créer un compte</button></a>
             ';
