@@ -46,9 +46,7 @@ session_start();
                     return;
                 }
 
-                $stmt = getUser($_POST['pseudo']);
-
-                if ($stmt->rowCount() != 0) {
+                if (getUser($_POST['pseudo'])->rowCount() != 0) {
                     $_SESSION['message'] = 'Pseudo déjà utilisé';
                     header('Location: ../php/create_user.php');
                     return;
