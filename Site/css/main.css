@@ -109,7 +109,7 @@ nav {
 }
 
 .checkmark:hover {
-    background-color: rgba(250,250,250);
+    background-color: rgb(250,250,250);
     border-color: orange;
 }
 
