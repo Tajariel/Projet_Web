@@ -117,6 +117,13 @@ ALTER TABLE `message`
   MODIFY `id_Message` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+ALTER TABLE `message`
+    MODIFY `photo` varchar(255) DEFAULTS 'no_photo' ;
+
+ALTER TABLE `message`
+    MODIFY `date` date DEFAULTS NOW() ;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`

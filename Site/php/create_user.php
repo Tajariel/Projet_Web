@@ -1,15 +1,16 @@
-<html>
-    <?php
+<?php
+session_start();
     /// Include - Require
     require '../include/part.php';
-    ?>
+?>
+
 
     <?php page_head('Se connecter','main.css'); ?>
-
-
+<html>
     <body>
     <?php page_header();
-    session_start();
+
+
     if(isset($_SESSION['message'])) {
         echo $_SESSION['message'];
         unset($_SESSION['message']);

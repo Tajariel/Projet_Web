@@ -28,7 +28,7 @@ function page_header() {
                 <div class="left">
                     <div id="connect">';
 
-    if(true) // si déconnecter
+    if(!isset($_SESSION['connexion']['id_user']))  // si déconnec
     {
         echo '
                         <form action="../include/manage_user.php" method="post">
@@ -44,7 +44,10 @@ function page_header() {
         echo '
                         <a href="parametre.php"><button class="button">Parametre</button></a>
                         <label>Pseudo</label>
-                        <button class="button">Se déconnecter</button>
+                          <form  action="../include/manage_user.php" method="post" >
+                            <input class="button" type="submit" name="action" id="déconnecter" value="deconnexion">
+                          </form>
+                          
             ';
     }
     echo '
