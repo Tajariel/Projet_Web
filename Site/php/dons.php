@@ -1,7 +1,13 @@
 <?php
+require '../include/part.php';
 session_start();
 
-
+page_head('Se connecter', 'main.css');
+page_header();
+if(isset($_SESSION['message'])) {
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+}
 ?>
 
 <b>Donne moi de la moula! </b>
