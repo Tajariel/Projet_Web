@@ -13,9 +13,9 @@ function page_head($titre,$css) {
 function page_header() {
     echo '
             <header>
-                <div class="right">
+                <div class="left">
                     <div id="logo_site">
-                        <img id="logo" src="../resource/logo.png" alt="Logo">
+                        <a id="logo" href="../php/acceuil.php"><img  src="../resource/logo.png" alt="Logo"></a>
                     </div>
                     <div id="dons">
                         <a href="dons.php"><button class="button">Dons</button></a>
@@ -25,7 +25,7 @@ function page_header() {
                         <button class="button">Rechercher</button>
                     </div>
                 </div>
-                <div class="left">
+                <div class="right">
                     <div id="connect">';
 
     if(true) // si déconnecter
