@@ -14,7 +14,7 @@ class ModelMessage extends Model
 
         $this->getDB();
         if ($id == NULL)
-            $id == 1;
+            $id = 1;
 
         return $this->getOne('message','Message',$id);
 

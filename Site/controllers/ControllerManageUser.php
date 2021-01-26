@@ -14,7 +14,7 @@ class ControllerManageUser
             unset( $_SESSION['connexion']);
 
             $_POST['redirection'] = 'acceuil';
-            header('Location: ../controllers/Routeur.php');
+            header('Location: index.php');
         }
 
         elseif ($_POST['action'] == 'connexion'){
@@ -58,12 +58,12 @@ class ControllerManageUser
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
 
             $_POST['redirection'] = 'acceuil';
-            header('Location: ../controllers/Routeur.php');
+            header('Location: index.php');
             return;
         }
 
         $_POST['acceuil'];
-        header('Location: ../controllers/Routeur.php');
+        header('Location: index.php');
 
     }
 
