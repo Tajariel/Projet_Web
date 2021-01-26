@@ -5,10 +5,11 @@ class viewCreateUser extends view
 
     public function echoCreateForm()
     {
+
         echo '
     <div id="page">
         <div id="center_square">
-            <form action="../controllers/ControllerManagerUser.php" method="post">
+            <form action="controllers/Router.php" method="get">
                 <p><label for="pseudo">Pseudo</label></br>
                     <input class="intext" type="text" name="pseudo" placeholder="Pseudo" required></p>
 

@@ -5,12 +5,9 @@ class ControllerAcceuil
     private $_modelMessage;
     private $_view;
 
-    public function __construct($url)
+    public function __construct()
     {
 
-        if (isset($url) /*&& count($url) > 1*/ && 1 == 0)
-            throw new Exception('Page introuvable');
-        else
 
         $this->Acceuil();
     }
@@ -21,7 +18,8 @@ class ControllerAcceuil
         $messages = $this->_modelMessage->getMessage();
 
         $this->_view = new viewAcceuil($messages);
-        $this->_view->echoHead('Acceuil');
+        $titre = 'Acceuil';
+        $this->_view->echoHead($titre);
         $this->_view->echoHeader();
         $this->_view->echoStartPage();
         $this->_view->echoNav();
