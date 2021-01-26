@@ -7,16 +7,22 @@
     font-size:1em;
 }
 
-
-img {
-
+html {
+    height: 100%;
+    background-color: rgb(55,60,60);
 }
 
 
 body {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0px;
+}
+
+body *{
+    color : white;
 }
 
 
@@ -25,7 +31,7 @@ header {
     justify-content:space-between;
 
     height: 10%;
-    width:100%;
+    width: 100%;
 
     background: rgb(210,130,210);
     border-bottom: 5px solid rgb(150,0,150);
@@ -45,13 +51,45 @@ header div {
 
 
 nav {
-    background-color: rgba(100,250,250,255);
-    border:3px solid rgba(100,250,250,255);
-    width: 200px;
+    border-right: 2px solid rgb(150,160,160);
+    background: rgb(45,50,50);
+    width: 20%;
+    padding:15px;
 }
 
-input:required {
-    border: 0px solid red;
+nav p{
+    transition: 200ms;
+
+    width: 100%;
+    padding:5px;
+    margin:1px;
+}
+
+nav p:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+section article{
+    transition: 200ms;
+
+    height: auto;
+    width: 100%;
+    padding:5px;
+    margin:10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+section article:hover{
+    background-color: rgba(10,10,10,0.1);
+}
+
+section article div{
+    width: 100%;
+    padding: 2px;
+
+    display: flex;
 }
 /*
     Fin_General
@@ -99,9 +137,11 @@ input:required {
     height: 30px;
 }
 
+
 .incheck {
     opacity: 0;
 }
+
 
 .checkmark {
     position: absolute;
@@ -115,14 +155,27 @@ input:required {
     border-radius: 2px;
 }
 
+
 .checkmark:hover {
     background-color: rgb(250,250,250);
     border-color: orange;
 }
 
+
 .incheck:checked ~ .checkmark{
     background-color: deepskyblue;
     border-color: darkslateblue;
+}
+
+.top {
+    font-size: 2em;
+}
+
+.bottom {
+    font-size: 0.6em;
+
+    flex-direction: row;
+    justify-content: space-between;
 }
 /*
     Fin_Classes
@@ -135,20 +188,21 @@ input:required {
 #page {
     display: flex;
     justify-content: center;
-    height: 100%;
+    height:100%;
 }
 
 
 #main_content {
-    width: 100%;
-    border:3px solid black;
+    width: 65%;
+    padding: 15px;
 }
 
 
 #vanessa {
     width: 15%;
-    background-color: rgba(200,150,0,255);
-    border:3px solid rgba(200,150,0,255);
+    border-left: 2px solid rgb(150,160,160);
+    background: rgb(45,50,50);
+    padding:15px;
 }
 
 
@@ -202,8 +256,12 @@ input:required {
     width: 20%;
 }
 
+#connect label {
+
+}
+
 #connect a{
-    width: 20%;
+    width: 25%;
 }
 
 #connect button{
