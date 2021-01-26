@@ -32,15 +32,16 @@ class Router{
 
 
 
-            if(isset($_POST['redirection']))
+            if(isset($_POST['action']))
             {
 
 
-                switch ($_POST['redirection']) {
+                switch ($_POST['action']) {
                     case 'acceuil':
                         $this->_ctrl = new ControllerAcceuil();
                         break;
                     case 'connexion':
+                        echo'Bite';
                         $this->_ctrl = new ControllerManageUser();
                         break;
                     case 'deconnexion':
