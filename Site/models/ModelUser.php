@@ -60,3 +60,14 @@ class ModelUser extends Model
 
 
 }
+
+if($_POST['action'] == 'deconnection')
+{
+
+} elseif ($_POST['action'] == 'connection')
+{
+
+} elseif ($_POST['action'] == 'creation')
+
+
+?>

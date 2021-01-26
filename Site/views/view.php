@@ -3,12 +3,12 @@
 
 abstract class view
 {
-    public function echoHead()
+    public function echoHead($title)
     {
         echo '<!DOCTYPE html>
 <html>
     <head>
-        <title>VANESTARRE</title>
+        <title>'.$title.'</title>
         <link rel="stylesheet" type="text/css" href="views/main.css">
         <meta charset="UTF-8"/>
     </head>

@@ -21,7 +21,7 @@ class ControllerAcceuil
         $messages = $this->_modelMessage->get2Messages(1);
 
         $this->_view = new viewAcceuil($messages);
-        $this->_view->echoHead();
+        $this->_view->echoHead('Acceuil');
         $this->_view->echoHeader();
         $this->_view->getContenu();
         $this->_view->echoTail();

@@ -3,11 +3,12 @@ class viewCreateUser extends view
 {
 
 
-    public function echoFormCrea()
+    public function echoCreateForm()
     {
-        echo '    <div id="page">
+        echo '
+    <div id="page">
         <div id="center_square">
-            <form action="../include/manage_user.php" method="post">
+            <form action="../include/ControllerManagerUser.php" method="post">
                 <p><label for="pseudo">Pseudo</label></br>
                     <input class="intext" type="text" name="pseudo" placeholder="Pseudo" required></p>
 
@@ -22,9 +23,9 @@ class viewCreateUser extends view
                 <p><label for="conditions">Acceptez les conditions d\'utilisations : <?php customCheckBox("conditions",true)?></label></p>
 
             <p><input class="button" type="submit" name="action" id="soumettre" value="creation"></p>
-</form>
-</div>
-</div>';
-}
+            </form>
+        </div>
+    </div>';
+    }
 
 }

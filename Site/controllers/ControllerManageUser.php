@@ -5,6 +5,17 @@ class ControllerAcceuil
     private $_modelUser;
     private $_viewCreateUser;
 
+    public function AccountCreation()
+    {
+        $this->_modelUser = new ModelUser();
+
+        $this->_view = new viewCreateUser();
+        $this->_view->echoHead();
+        $this->_view->echoHeader();
+        $this->_view->echoCreateForm();
+        $this->_view->echoTail();
+    }
+
     public function deconnection(){
         unset($_SESSION['user']);
     }
