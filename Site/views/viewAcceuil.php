@@ -2,20 +2,21 @@
 
 class viewAcceuil{
 
-private $_message;
+private $_messages;
 
 
-    public function __construct($message) {
+    public function __construct($messages) {
 
-            $this->_message = $message;
+            $this->_messages = $messages;
     }
 
-    public function echo_content()
+    public function getContenu()
     {
-        foreach ($this->_message as $_message) {
-            echo $_message->getContenu();
+        foreach ($this->_messages as $message) {
+            echo $message->getContenu();
         }
     }
+
 
 
 }
