@@ -11,8 +11,7 @@ class Router{
         try{
             //CHARGEMENT AUTOMATIQUE DES CLASSES
             spl_autoload_register(function ($class_name) {
-                echo $class_name . ' ' .PHP_EOL;
-                echo 'view/'.$class_name .'.php'.PHP_EOL;
+
                 if(file_exists('models/'.$class_name .'.php'))
                 {
                     include_once 'models/' . $class_name . '.php';
@@ -42,7 +41,7 @@ class Router{
                         $this->_ctrl = new ControllerAcceuil();
                         break;
                     case 'connexion':
-                        $this->_ctrl = new ControllerAcceuil();
+                        $this->_ctrl = new ControllerManageUser();
                         break;
                     case 'deconnexion':
                         $this->_ctrl = new ControllerAcceuil();

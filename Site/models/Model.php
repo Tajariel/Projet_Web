@@ -20,6 +20,7 @@ abstract class Model
         if(self::$_db == null)
             $this->setDB();
         return self::$_db;
+
     }
 
     protected function getAll ($table, $obj){
