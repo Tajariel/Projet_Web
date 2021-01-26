@@ -86,7 +86,7 @@ class ControllerManageUser
                 return;
             }
 
-            self::$_modelUser->createUser($pseudo, $email, $password);
+            $this->_modelUser->createUser($pseudo, $email, $password);
 
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
