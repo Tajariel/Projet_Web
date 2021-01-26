@@ -1,21 +1,39 @@
 <?php
 
-include_once '../models/ModelUser.php';
-
 class ControllerManageUser
 {
-  /*  private static $_modelUser;
-    private static $_viewCreateUser;
+    private $_modelUser;
+    private $_viewCreateUser;
 
-
-    public static function init()
+    public function __construct()
     {
-        self::$_modelUser = new ModelUser();
+
+        $this ->_modelUser = new ModelUser();
+
+        if($_POST['action'] == 'deconnexion'){
+            unset( $_SESSION['connexion']);
+
+            $_POST['redirection'] = 'acceuil';
+            header('Location: ../controllers/Routeur.php');
+        }
+
+        elseif ($_POST['action'] == 'connexion'){
+            $this->connection($_POST['pseudo'],$_POST['password']);
+        }
+
+        elseif ($_POST['action'] == 'creation'){
+            $this->creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
+            $this->AccountCreationPage();
+        }
+
+        else
+        {
+            echo 'Action non traitée';
+        }
     }
 
-    public function AccountCreation()
+    public function AccountCreationPage()
     {
-        $this->_viewCreateUser = new viewCreateUser();
 
         $this->_view = new viewCreateUser();
         $this->_view->echoHead();
@@ -24,17 +42,13 @@ class ControllerManageUser
         $this->_view->echoTail();
     }
 
-    public static function deconnection(){
-        unset($_SESSION['user']);
-    }
-
-    public static function connection($pseudo, $password){
+    public function connection($pseudo, $password){
 
         try {
 
-            $result = self::$_modelUser->getUser($pseudo);
+            $result = $this->_modelUser->getUser($pseudo);
 
-            if ($result && password_verify($password, self::$_modelUser->getHashedPassword($result->getIdUser()))) {
+            if ($result && $this->_modelUser->checkPassword()) {
                 $_SESSION['user'] = new User($result);
 
             } else {
@@ -53,7 +67,7 @@ class ControllerManageUser
 
     }
 
-    public static function creation($pseudo, $email, $password, $passwordbis){
+    public function creation($pseudo, $email, $password, $passwordbis){
         try {
 
             if ($password != $passwordbis) {
@@ -83,32 +97,6 @@ class ControllerManageUser
         $_POST['redirection'] = 'acceuil';
         header('Location: ../controllers/Routeur.php');
     }
-    */
 }
-/*
-ControllerManageUser::init();
-
-if($_POST['action'] == 'deconnexion'){
-    unset( $_SESSION['connexion']);
-
-    $_POST['redirection'] = 'acceuil';
-    header('Location: ../controllers/Routeur.php');
-}
-
-
-elseif ($_POST['action'] == 'connexion'){
-    ControllerManageUser::connection($_POST['pseudo'],$_POST['password']);
-}
-
-
-elseif ($_POST['action'] == 'creation'){
-    ControllerManageUser::creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
-
-}
-
-else
-{
-    echo 'Action non traitée';
-}*/
 
 ?>

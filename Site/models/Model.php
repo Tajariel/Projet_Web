@@ -28,7 +28,6 @@ abstract class Model
         while($data = $que->fetch(PDO::FETCH_ASSOC))
         {
             $var[] = new $obj($data);
-
         }
 
         return $var;
@@ -43,7 +42,20 @@ abstract class Model
         $data = $que->fetch(PDO::FETCH_ASSOC);
         $var[] = new $obj($data);
         return $var;
-}
+    }
+
+    public function changeParam($id, $column, $val)
+    {
+        $querry = 'UPDATE user SET '.$column.' = :val WHERE id_user = '.$id;
+
+        $stmt = self::$_db->prepare($querry);
+
+        $stmt->bindValue('val', $val, PDO::PARAM_STR);
+
+        self::$_db->beginTransaction();
+        $stmt->execute();
+        self::$_db->commit();
+    }
 
 
 

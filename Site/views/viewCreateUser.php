@@ -1,4 +1,5 @@
 <?php
+
 class viewCreateUser extends view
 {
 
@@ -30,3 +31,5 @@ class viewCreateUser extends view
     }
 
 }
+
+?>
