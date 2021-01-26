@@ -48,7 +48,7 @@ class ControllerManageUser
 
             $result = $this->_modelUser->getUser($pseudo);
 
-            if ($result && $this->_modelUser->checkPassword()) {
+            if ($result && $this->_modelUser->checkPassword($result->getIdUser(), $password)) {
                 $_SESSION['user'] = new User($result);
 
             } else {

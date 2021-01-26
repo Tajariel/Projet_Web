@@ -1,5 +1,5 @@
 <?php
-include_once 'controllers/ControllerAcceuil.php';
+include_once 'ControllerAcceuil.php';
 
 class Router{
 
