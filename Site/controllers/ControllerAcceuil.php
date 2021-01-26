@@ -23,7 +23,7 @@ class ControllerAcceuil
         $this->_view = new viewAcceuil($messages);
         $this->_view->echoHead('Acceuil');
         $this->_view->echoHeader();
-        $this->_view->getContenu();
+        $this->_view->echoContenu();
         $this->_view->echoTail();
     }
 }

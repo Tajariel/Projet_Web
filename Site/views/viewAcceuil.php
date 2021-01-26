@@ -10,7 +10,7 @@ private $_messages;
             $this->_messages = $messages;
     }
 
-    public function getContenu()
+    public function echoContenu()
     {
         foreach ($this->_messages as $message) {
             echo $message->getContenu();
