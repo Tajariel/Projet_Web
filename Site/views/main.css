@@ -19,11 +19,13 @@ body {
     justify-content: center;
 }
 
+
 header {
     display:flex;
     justify-content:space-between;
 
-    height: 100px;
+    height: 10%;
+    width:100%;
 
     background: rgb(210,130,210);
     border-bottom: 5px solid rgb(150,0,150);
@@ -31,8 +33,8 @@ header {
 
 
 header * {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 
 }
 
@@ -47,6 +49,10 @@ nav {
     border:3px solid rgba(100,250,250,255);
     width: 200px;
 }
+
+input:required {
+    border: 0px solid red;
+}
 /*
     Fin_General
  */
@@ -57,15 +63,16 @@ nav {
  */
 .right {
     display: flex;
-    width:100%;
-    align-items:start;
+    width:55%;
+    flex-direction: row-reverse;
+
 }
 
 
 .left {
     display: flex;
-    width:100%;
-    flex-direction: row-reverse;
+    width:45%;
+    align-items:start;
 }
 
 
@@ -109,7 +116,7 @@ nav {
 }
 
 .checkmark:hover {
-    background-color: rgba(250,250,250);
+    background-color: rgb(250,250,250);
     border-color: orange;
 }
 
@@ -148,7 +155,7 @@ nav {
 #center_square {
     position: relative;
     width: 700px;
-    height: 500px;
+    height: 550px;
 
     border:2px solid rgba(200,200,200,250);
     border-radius: 20px;
@@ -159,9 +166,50 @@ nav {
     margin: 10px;
 }
 
+
 #logo_site {
     padding: 5px;
 }
+
+#dons {
+    width : 20%;
+}
+
+#dons *{
+    width : 100%;
+}
+
+#search {
+    width : 100%;
+}
+
+#search #search_bar {
+    width : 60%;
+}
+#search button {
+    width : 30%;
+}
+
+#connect #pseudo{
+    width: 25%;
+}
+
+#connect #password{
+    width: 25%;
+}
+
+#connect #connecter{
+    width: 20%;
+}
+
+#connect a{
+    width: 20%;
+}
+
+#connect button{
+    width: 100%;
+}
+
 /*
     Fin_ID
  */
@@ -192,11 +240,17 @@ header .button:hover {
     background: rgb(230,140,200);
 }
 
+
 #logo {
-    height: 50%;
+    height: 100%;
     margin-top: auto;
     margin-bottom: auto;
 }
 /*
     Fin_Prioritaire
+ */
+
+
+/*
+ Coin débugage
  */
