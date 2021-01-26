@@ -13,16 +13,14 @@ class ControllerAcceuil
         else
 
 
-
+        $this->_modelMessage = new ModelMessage();
         $this->messages();
     }
 
-    private function messages()
+   public function messages()
     {
-
-        $this->_modelMessage = new ModelMessage;
         $messages = $this->_modelMessage->getMessage();
-
-        require_once('views/viewAcceuil.php');
+        $this->_view = new viewAcceuil($messages);
+        $this->_view->echo_content();
     }
 }

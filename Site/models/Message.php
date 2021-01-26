@@ -1,72 +1,110 @@
 <?php
 
 class Message{
-    private $_id;
-    private $_msg;
-    private $_photo;
+    private $_id_Message;
     private $_date;
+    private $_contenu;
+    private $_photo;
+    private $_tag;
+
 
     //CONSTRUCTEUR
-    public function __construct(array $data){
-    $this->hydrate($data);
+    public function __construct(array $data)
+    {
+        $this->hydrate($data);
     }
 
-    //HYDRATATION
     public function hydrate(array $data)
     {
-        foreach ($data as $key => $value){
-
+        foreach ($data as $key => $value)
+        {
             $method = 'set'.ucfirst($key);
 
             if(method_exists($this, $method))
-                $this->$method(value);
-
+                $this->$method($value);
+        }
     }
+
+
+
+    //GETTER
+    /**
+     * @return string
+     */
+    public function getIdMessage()
+    {
+        return $this->_id_Message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->_date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->_contenu;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->_photo;
+    }
+    /**
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->_tag;
     }
 
     //SETTER
-    public function setId($id){
-        $id = (int) $id;
-        if ($id > 0)
-            $this->_id = $id;
-    }
-
-    public function setMsg($msg){
-        if(is_string($msg))
-            $this->_msg = $msg;
-    }
-
-
-    public function setPhoto($photo)
+    /**
+     * @param string $id_Message
+     */
+    public function setIdMessage($id_Message)
     {
-        if(is_string($photo))
-            $this->_photo = $photo;
+        $this->_id_Message = $id_Message;
     }
 
+    /**
+     * @param string $date
+     */
     public function setDate($date)
     {
         $this->_date = $date;
     }
 
-    //GETTER
-
-    public function getId()
+    /**
+     * @param string $contenu
+     */
+    public function setContenu($contenu)
     {
-        return $this->_id;
+        $this->_contenu = $contenu;
     }
 
-    public function getMsg()
+    /**
+     * @param string $photo
+     */
+    public function setPhoto($photo)
     {
-        return $this->_msg;
+        $this->_photo = $photo;
     }
 
-    public function getPhoto()
+    /**
+     * @param string $tag
+     */
+    public function setTag($tag)
     {
-        return $this->_photo;
-    }
-
-    public function getDate()
-    {
-        return $this->_date;
+        $this->_tag = $tag;
     }
 }

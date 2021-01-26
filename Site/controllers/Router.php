@@ -8,9 +8,17 @@ class Router{
 
        try{
            //CHARGEMENT AUTOMATIQUE DES CLASSES
-           spl_autoload_register(function($class)
-           {
-               require_once ('models/'.$class.'.php');
+           spl_autoload_register(function ($class_name) {
+               if(file_exists('models/'.$class_name .'.php'))
+                   include 'models/'.$class_name .'.php';
+
+               else
+               {
+                   if(file_exists('views/'.$class_name .'.php'))
+                       include 'views/'.$class_name .'.php';
+
+               }
+
            });
 
            $url = '';
@@ -38,6 +46,7 @@ class Router{
 
                require_once ('controllers/ControllerAcceuil.php');
                $this->_ctrl = new ControllerAcceuil($url);
+
 
            }
        }
