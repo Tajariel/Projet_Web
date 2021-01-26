@@ -18,12 +18,20 @@ class ControllerAcceuil
    public function Acceuil()
     {
         $this->_modelMessage = new ModelMessage();
-        $messages = $this->_modelMessage->get2Messages(1);
+        $messages = $this->_modelMessage->getMessage();
 
         $this->_view = new viewAcceuil($messages);
         $this->_view->echoHead('Acceuil');
         $this->_view->echoHeader();
-        $this->_view->echoContenu();
+        $this->_view->echoStartPage();
+        $this->_view->echoNav();
+        $this->_view->echoStartMainContent();
+
+        $this->_view->echoArticles();
+
+        $this->_view->echoEndMainContent();
+        $this->_view->echoVanessa();
+        $this->_view->echoEndPage();
         $this->_view->echoTail();
     }
 }
