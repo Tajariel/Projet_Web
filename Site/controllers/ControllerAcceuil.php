@@ -15,9 +15,8 @@ class ControllerAcceuil
    public function Acceuil()
     {
         $this->_modelMessage = new ModelMessage();
-        $messages = $this->_modelMessage->getMessage();
 
-        $this->_view = new viewAcceuil($messages);
+        $this->_view = new viewAcceuil($this->_modelMessage);
         $titre = 'Acceuil';
         $this->_view->echoHead($titre);
         $this->_view->echoHeader();

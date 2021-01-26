@@ -2,14 +2,14 @@
 
 class viewAcceuil extends view{
 
-    private $_messages;
     private $IDmessage;
+    private $modelMessage;
 
 
-    public function __construct($messages) {
+    public function __construct($model) {
+        $this->modelMessage = $model;
 
-            $this->_messages = $messages;
-            $this->IDmessage = 0;
+        $this->IDmessage = $this->modelMessage->getMaxID();
     }
 
 
@@ -37,20 +37,37 @@ class viewAcceuil extends view{
     }
 
     public function echoArticles() {
-        $nbElement = 2;
+        $nbElement = 4;
 
         for ($i = 0 ; $i < $nbElement ; $i++)
         {
+            if ($this->IDmessage == 0 || $this->IDmessage > $this->modelMessage->getMaxID())
+                break;
+            $tempMessage = $this->modelMessage->getFromID($this->IDmessage);
+
             echo '
-            <article class="post">
+            <article class="post" style="background:';
+
+            if($this->IDmessage %2)
+                echo 'rgb(110,110,110,0.1)';
+            else
+                echo'rgb(200,200,200,0.1)';
+
+            echo ';">
                 <div class="top">
-                    <p>
-                        Bonjour, je suis ici pour faire un test. Blablabla.
-                    </p>
+                    <p>';
+
+            echo $tempMessage['contenu'];
+
+            echo
+                    '</p>
                 </div>
                 <div class="bottom">
-                    <p>
-                        20/02/2002
+                    <p>';
+            
+            echo $tempMessage['date'];
+
+            echo '
                     </p>
                     <p>
                         Emoji??????
@@ -58,7 +75,7 @@ class viewAcceuil extends view{
                 </div>
             </article>
         ';
-            $this->IDmessage++;
+            $this->IDmessage--;
         }
 
 

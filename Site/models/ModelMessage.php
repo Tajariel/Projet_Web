@@ -3,6 +3,20 @@
 class ModelMessage extends Model
 {
 
+    public function getMaxID(){
+
+        $querry = 'SELECT MAX(id_Message) FROM message';
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+        return $stmt->fetch()['MAX(id_Message)'];
+
+    }
+
     public function getMessage()
     {
         $this->getDB();
@@ -18,6 +32,11 @@ class ModelMessage extends Model
 
         return $this->getOne('message','Message',$id);
 
+    }
+
+    public function getFromID($id){
+        $this->getDB();
+        return $this->getOne('message','Message',$id);
     }
 
     public function getEmojiCount($id, $emoji)

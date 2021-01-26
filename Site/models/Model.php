@@ -33,6 +33,7 @@ abstract class Model
         return $var;
         $que->closeCursor();
     }
+
     protected function getOne ($table, $obj, $id){
 
         $var = [];
@@ -40,8 +41,8 @@ abstract class Model
         $que->bindValue('id', $id);
         $que->execute();
         $data = $que->fetch(PDO::FETCH_ASSOC);
-        $var[] = new $obj($data);
-        return $var;
+        //$var[] = new $obj($data);
+        return $data;
     }
 
     public function changeParam($id, $column, $val)
