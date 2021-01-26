@@ -1,5 +1,8 @@
 <?php
+include_once 'controllers/ControllerAcceuil.php';
+
 class Router{
+
     private $_ctrl;
     private $_view;
 
@@ -10,43 +13,41 @@ class Router{
            //CHARGEMENT AUTOMATIQUE DES CLASSES
            spl_autoload_register(function ($class_name) {
                if(file_exists('models/'.$class_name .'.php'))
-                   include 'models/'.$class_name .'.php';
+                   include_once 'models/'.$class_name .'.php';
 
                else
                {
                    if(file_exists('views/'.$class_name .'.php'))
-                       include 'views/'.$class_name .'.php';
+                       include_once 'views/'.$class_name .'.php';
 
                }
 
            });
 
-           $url = '';
-            // CONTROLLER INCLU SELON ACTION DE USER
 
-           if(isset($_GET['url']))
+
+
+           if(isset($_POST['redirection']))
            {
 
-               $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
 
-               $controller = ucfirst(strtolower($url[0]));
-               $controllerClass = "Controller" . $controller;
-               $controllerFile = "Controllers/" . $controllerClass . '.php';
+               switch ($_POST['redirection']) {
+                   case 'acceuil':
+                       $this->_ctrl = new ControllerAcceuil();
+                       break;
+                   case 'connexion':
+                       $this->_ctrl = new ControllerAcceuil();
+                       break;
+                   case 'deconnexion':
+                       $this->_ctrl = new ControllerAcceuil();
+                       break;
 
-               if (file_exists($controllerFile))
-               {
-                   require_once($controllerFile);
-                   $this->_ctrl = new $controllerClass($url);
+
                }
-               else
-                   throw  new Exception('Page introuvable');
            }
            else
-               {
-
-               require_once ('controllers/ControllerAcceuil.php');
-               $this->_ctrl = new ControllerAcceuil($url);
-
+           {
+               $this->_ctrl = new ControllerAcceuil();
            }
        }
        //GESTION DES ERREURS

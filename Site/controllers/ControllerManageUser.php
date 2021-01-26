@@ -4,7 +4,7 @@ include_once '../models/ModelUser.php';
 
 class ControllerManageUser
 {
-    private static $_modelUser;
+  /*  private static $_modelUser;
     private static $_viewCreateUser;
 
 
@@ -83,8 +83,9 @@ class ControllerManageUser
         $_POST['redirection'] = 'acceuil';
         header('Location: ../controllers/Routeur.php');
     }
+    */
 }
-
+/*
 ControllerManageUser::init();
 
 if($_POST['action'] == 'deconnexion'){
@@ -108,6 +109,6 @@ elseif ($_POST['action'] == 'creation'){
 else
 {
     echo 'Action non traitée';
-}
+}*/
 
 ?>
