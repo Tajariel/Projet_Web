@@ -97,3 +97,5 @@ abstract class view
         ';
     }
 }
+
+?>

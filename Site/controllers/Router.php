@@ -4,7 +4,6 @@ include_once 'controllers/ControllerAcceuil.php';
 class Router{
 
     private $_ctrl;
-    private $_view;
 
     public function routeReq()
     {

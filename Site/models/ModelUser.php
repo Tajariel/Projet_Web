@@ -1,8 +1,5 @@
 <?php
 
-include_once '../models/Model.php';
-include_once 'User.php';
-
 class ModelUser extends Model
 {
 
@@ -29,7 +26,7 @@ class ModelUser extends Model
         return new User($stmt->fetch());
     }
 
-    public function getHashedPassword($id)
+    public function checkPassword($id, $password)
     {
         $querry = 'SELECT mdp FROM user WHERE id_user = :psd';
 
@@ -43,8 +40,10 @@ class ModelUser extends Model
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-        return $stmt['mdp'];
+        return password_verify($password, $stmt->fetch()['mdp']);
     }
+
+
 
     public function createUser($pseudo, $email, $password)
     {
@@ -61,16 +60,7 @@ class ModelUser extends Model
         self::$_db->commit();
     }
 
-
 }
-
-if($_POST['action'] == 'deconnection')
-{
-
-} elseif ($_POST['action'] == 'connection')
-{
-
-} elseif ($_POST['action'] == 'creation')
 
 
 ?>
