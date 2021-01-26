@@ -1,17 +1,13 @@
 <?php
+    session_start();
 
+    include_once 'controllers/Router.php';
 
-include_once 'controllers/Router.php';
+    if (!isset($_POST['redirection']))
+    {
+        $router = new Router();
+    }
 
-if (!isset($_POST['redirection']))
-{
-    $router = new Router();
-}
-
-$router->routeReq();
-
-
-
-
+    $router->routeReq();
 
 ?>
