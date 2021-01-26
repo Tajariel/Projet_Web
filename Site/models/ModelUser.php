@@ -1,5 +1,8 @@
 <?php
 
+include_once '../models/Model.php';
+include_once 'User.php';
+
 class ModelUser extends Model
 {
 
@@ -13,7 +16,7 @@ class ModelUser extends Model
     {
         $querry = 'SELECT id_user, pseudo, email, type FROM user WHERE pseudo = :psd';
 
-        $stmt = self::$_db->prepare($querry);
+        $stmt = $this->getDB()->prepare($querry);
 
         $stmt->bindValue('psd', $pseudo, PDO::PARAM_STR);
 

@@ -1,13 +1,20 @@
 <?php
 
-class ControllerAcceuil
+include_once '../models/ModelUser.php';
+
+class ControllerManageUser
 {
     private static $_modelUser;
     private static $_viewCreateUser;
 
-    public function AccountCreation()
+
+    public static function init()
     {
         self::$_modelUser = new ModelUser();
+    }
+
+    public function AccountCreation()
+    {
         $this->_viewCreateUser = new viewCreateUser();
 
         $this->_view = new viewCreateUser();
@@ -25,9 +32,9 @@ class ControllerAcceuil
 
         try {
 
-            $result = self::_modelUser(getUser($pseudo));
+            $result = self::$_modelUser->getUser($pseudo);
 
-            if ($result && password_verify($password, $result->getMdp())) {
+            if ($result && password_verify($password, self::$_modelUser->getHashedPassword($result->getIdUser()))) {
                 $_SESSION['user'] = new User($result);
 
             } else {
@@ -35,9 +42,14 @@ class ControllerAcceuil
             }
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
-            header('Location: ../php/acceuil.php');
+
+            $_POST['redirection'] = 'acceuil';
+            header('Location: ../controllers/Routeur.php');
             return;
         }
+
+        $_POST['acceuil'];
+        header('Location: ../controllers/Routeur.php');
 
     }
 
@@ -46,13 +58,17 @@ class ControllerAcceuil
 
             if ($password != $passwordbis) {
                 $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
-                header('Location: ../php/create_user.php');
+
+                $_POST['redirection'] = 'creation';
+                header('Location: ../controllers/Routeur.php');
                 return;
             }
 
             if (getUser($_POST['pseudo'])->rowCount() != 0) {
                 $_SESSION['message'] = 'Pseudo déjà utilisé';
-                header('Location: ../php/create_user.php');
+
+                $_POST['redirection'] = 'creation';
+                header('Location: ../controllers/Routeur.php');
                 return;
             }
 
@@ -60,27 +76,32 @@ class ControllerAcceuil
 
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
-            header('Location: ../php/create_user.php');
+            $_POST['redirection'] = 'creation';
+            header('Location: ../controllers/Routeur.php');
             return;
         }
-
-        header('Location: ../php/acceuil.php');
+        $_POST['redirection'] = 'acceuil';
+        header('Location: ../controllers/Routeur.php');
     }
 }
 
+ControllerManageUser::init();
+
 if($_POST['action'] == 'deconnexion'){
     unset( $_SESSION['connexion']);
-    header('Location: ../php/acceuil.php');
+
+    $_POST['redirection'] = 'acceuil';
+    header('Location: ../controllers/Routeur.php');
 }
 
 
 elseif ($_POST['action'] == 'connexion'){
-    ControllerAcceuil::connection($_POST['pseudo'],$_POST['password']);
+    ControllerManageUser::connection($_POST['pseudo'],$_POST['password']);
 }
 
 
 elseif ($_POST['action'] == 'creation'){
-    ControllerAcceuil::creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
+    ControllerManageUser::creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
 
 }
 

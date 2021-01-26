@@ -47,7 +47,6 @@ class Router{
                require_once ('controllers/ControllerAcceuil.php');
                $this->_ctrl = new ControllerAcceuil($url);
 
-
            }
        }
        //GESTION DES ERREURS
