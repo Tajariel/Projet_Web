@@ -6,6 +6,7 @@ class User{
     private $_id_user;
     private $_pseudo;
     private $_email;
+    private $_type;
 
     //CONSTRUCTEUR
     public function __construct(array $data)
@@ -70,6 +71,22 @@ class User{
     public function setEmail($email)
     {
         $this->_email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->_type = $type;
     }
 
 }

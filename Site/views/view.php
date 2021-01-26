@@ -33,7 +33,7 @@ abstract class view
         </div>
         <div class="left">
             <div id="connect">';
-        if(true) // si déconnecter
+        if(isset($_SESSION['user'])) // si déconnecté
     {
         echo '
             <form action="../include/manage_user.php" method="post">
