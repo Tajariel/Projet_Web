@@ -6,10 +6,11 @@ abstract class Model
     protected static $_db;
 
     // INSTANCIE CONNEXION DB
-    private static function setDB()
+    private function setDB()
     {
-        $dsn = 'mysql:host=localhost;dbname=simp-land_db';
-        self::$_db = new PDO($dsn, 'root', '');
+        $dsn = 'mysql:host=mysql;dbname=simp-land_db';
+        self::$_db = new PDO($dsn, 'root', 'mdp_root');
+
 
         self::$_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }

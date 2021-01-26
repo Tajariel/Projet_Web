@@ -37,7 +37,7 @@ abstract class view
         if(true) // si déconnecter
         {
             echo '
-                        <form action="../controllers/Router.php" method="post">
+                        <form action="../index.php" method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
                             <input class="button" type="submit" name="action" id="connecter" value="connexion">
