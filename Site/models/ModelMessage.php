@@ -9,15 +9,14 @@ class ModelMessage extends Model
         return $this->getAll('message', 'Message');
     }
 
-    function get2Messages($id = NULL)
+     public function get2Messages($id = NULL)
     {
 
-        $sql = 'SELECT contenu, photo FROM message WHERE id_Message >= :id LIMIT = 2';
+        $this->getDB();
+        if ($id == NULL)
+            $id == 1;
 
-        $stmt = self::$_db->prepare($sql);
-        $stmt->bindValue('id', $id);
-        $stmt->execute();
+        return $this->getOne('message','Message',$id);
 
-        return $stmt;
     }
 }

@@ -17,12 +17,4 @@ private $_messages;
         }
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTeub()
-    {
-
-    }
-
 }

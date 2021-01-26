@@ -18,7 +18,8 @@ class ControllerAcceuil
    public function Acceuil()
     {
         $this->_modelMessage = new ModelMessage();
-        $messages = $this->_modelMessage->getMessage();
+        $messages = $this->_modelMessage->get2Messages(1);
+
         $this->_view = new viewAcceuil($messages);
         $this->_view->echoHead();
         $this->_view->echoHeader();

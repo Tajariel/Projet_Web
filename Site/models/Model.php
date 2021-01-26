@@ -8,8 +8,9 @@ abstract class Model
     // INSTANCIE CONNEXION DB
     private static function setDB()
     {
-        $dsn = 'mysql:host=localhost;dbname=simp-land_db';
-        self::$_db = new PDO($dsn, 'root', '');
+        $dsn = 'mysql:host=mysql;dbname=simp-land_db';
+        self::$_db = new PDO($dsn, 'root', 'mdp_root');
+
         self::$_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
@@ -31,7 +32,20 @@ abstract class Model
         }
 
         return $var;
-        $$que->closeCursor();
+        $que->closeCursor();
     }
+    protected function getOne ($table, $obj, $id){
+
+        $var = [];
+        $que = self::$_db->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');
+        $que->bindValue('id', $id);
+        $que->execute();
+        $data = $que->fetch(PDO::FETCH_ASSOC);
+        $var[] = new $obj($data);
+        return $var;
+}
+
+
+
 
 }

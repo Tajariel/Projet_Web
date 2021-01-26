@@ -9,7 +9,7 @@ class Message{
 
     //CONSTRUCTEUR
     public function __construct(array $data)
-    {
+  {
         $this->hydrate($data);
     }
 
