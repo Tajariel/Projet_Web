@@ -19,9 +19,9 @@ abstract class view
     {
         echo '
             <header>
-                <div class="right">
+                <div class="left">
                     <div id="logo_site">
-                        <img id="logo" src="../resource/logo.png" alt="Logo">
+                        <img id="logo" src="ressource/logo.png" alt="Logo">
                     </div>
                     <div id="dons">
                         <a href="dons.php"><button class="button">Dons</button></a>
@@ -31,7 +31,7 @@ abstract class view
                         <button class="button">Rechercher</button>
                     </div>
                 </div>
-                <div class="left">
+                <div class="right">
                     <div id="connect">';
 
         if(true) // si déconnecter
@@ -78,8 +78,22 @@ abstract class view
     public function echoTail()
     {
         echo '
-    </body>
-</html>';
+            </body>
+        </html>';
 
+    }
+
+    public function echoStartPage()
+    {
+        echo '
+            <div id="page">
+        ';
+    }
+
+    public function echoEndPage()
+    {
+        echo '
+            </div>
+        ';
     }
 }
