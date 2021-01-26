@@ -5,7 +5,6 @@ class Message{
     private $_date;
     private $_contenu;
     private $_photo;
-    private $_tag;
 
 
     //CONSTRUCTEUR
@@ -59,13 +58,6 @@ class Message{
     {
         return $this->_photo;
     }
-    /**
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->_tag;
-    }
 
     //SETTER
     /**
@@ -98,13 +90,5 @@ class Message{
     public function setPhoto($photo)
     {
         $this->_photo = $photo;
-    }
-
-    /**
-     * @param string $tag
-     */
-    public function setTag($tag)
-    {
-        $this->_tag = $tag;
     }
 }
