@@ -8,7 +8,7 @@ class viewCreateUser extends view
         echo '
     <div id="page">
         <div id="center_square">
-            <form action="../include/ControllerManagerUser.php" method="post">
+            <form action="../controllers/ControllerManagerUser.php" method="post">
                 <p><label for="pseudo">Pseudo</label></br>
                     <input class="intext" type="text" name="pseudo" placeholder="Pseudo" required></p>
 

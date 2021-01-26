@@ -2,12 +2,13 @@
 
 class ControllerAcceuil
 {
-    private $_modelUser;
-    private $_viewCreateUser;
+    private static $_modelUser;
+    private static $_viewCreateUser;
 
     public function AccountCreation()
     {
-        $this->_modelUser = new ModelUser();
+        self::$_modelUser = new ModelUser();
+        $this->_viewCreateUser = new viewCreateUser();
 
         $this->_view = new viewCreateUser();
         $this->_view->echoHead();
@@ -16,15 +17,15 @@ class ControllerAcceuil
         $this->_view->echoTail();
     }
 
-    public function deconnection(){
+    public static function deconnection(){
         unset($_SESSION['user']);
     }
 
-    public function connection($pseudo, $password){
+    public static function connection($pseudo, $password){
 
         try {
 
-            $result = $this->_modelUser(getUser($pseudo));
+            $result = self::_modelUser(getUser($pseudo));
 
             if ($result && password_verify($password, $result->getMdp())) {
                 $_SESSION['user'] = new User($result);
@@ -40,7 +41,7 @@ class ControllerAcceuil
 
     }
 
-    public function creation($pseudo, $email, $password, $passwordbis){
+    public static function creation($pseudo, $email, $password, $passwordbis){
         try {
 
             if ($password != $passwordbis) {
@@ -55,7 +56,7 @@ class ControllerAcceuil
                 return;
             }
 
-            $this->_modelUser->createUser($pseudo, $email, $password);
+            self::$_modelUser->createUser($pseudo, $email, $password);
 
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
@@ -74,12 +75,12 @@ if($_POST['action'] == 'deconnexion'){
 
 
 elseif ($_POST['action'] == 'connexion'){
-
+    ControllerAcceuil::connection($_POST['pseudo'],$_POST['password']);
 }
 
 
 elseif ($_POST['action'] == 'creation'){
-
+    ControllerAcceuil::creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
 
 }
 
