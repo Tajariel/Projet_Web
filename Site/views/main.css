@@ -73,7 +73,9 @@ nav p:hover{
 }
 
 section article{
-    transition: 200ms;
+    transition: 300ms;
+
+    border: 3px solid rgba(10,10,10,0);
 
     height: auto;
     width: 100%;
@@ -85,7 +87,8 @@ section article{
 }
 
 section article:hover{
-    background-color: rgba(10,10,10,0.1);
+    border: 3px solid rgb(55,60,60);
+    border-radius: 2px;
 }
 
 section article div{
