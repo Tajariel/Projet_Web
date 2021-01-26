@@ -1,6 +1,6 @@
 <?php
 
-class viewAcceuil{
+class viewAcceuil extends view{
 
 private $_messages;
 
@@ -17,6 +17,12 @@ private $_messages;
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTeub()
+    {
 
+    }
 
 }

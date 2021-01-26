@@ -13,14 +13,18 @@ class ControllerAcceuil
         else
 
 
-        $this->_modelMessage = new ModelMessage();
-        $this->messages();
+
+        $this->Acceuil();
     }
 
-   public function messages()
+   public function Acceuil()
     {
+
+        $this->_modelMessage = new ModelMessage();
         $messages = $this->_modelMessage->getMessage();
         $this->_view = new viewAcceuil($messages);
-        $this->_view->echo_content();
+        $this->_view->echoHead();
+        $this->_view->page_header();
+        $this->_view->getContenu();
     }
 }
