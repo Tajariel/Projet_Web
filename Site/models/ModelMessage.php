@@ -6,6 +6,6 @@ class ModelMessage extends Model
     public function getMessage()
     {
         $this->getDB();
-          return $this->getAll('message', 'Message');
+        return $this->getAll('message', 'Message');
     }
 }

@@ -1,0 +1,202 @@
+/*
+    General
+ */
+* {
+    box-sizing: border-box;
+    font-family:"Open Sans", sans-serif;
+    font-size:1em;
+}
+
+
+img {
+
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    display:flex;
+    justify-content:space-between;
+
+    height: 100px;
+
+    background: rgb(210,130,210);
+    border-bottom: 5px solid rgb(150,0,150);
+}
+
+
+header * {
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+
+header div {
+    display:flex;
+}
+
+
+nav {
+    background-color: rgba(100,250,250,255);
+    border:3px solid rgba(100,250,250,255);
+    width: 200px;
+}
+/*
+    Fin_General
+ */
+
+
+/*
+    Classes
+ */
+.right {
+    display: flex;
+    width:100%;
+    align-items:start;
+}
+
+
+.left {
+    display: flex;
+    width:100%;
+    flex-direction: row-reverse;
+}
+
+
+.intext {
+    padding: 5px;
+
+    border-radius: 7px;
+    border-color:darkgrey;
+}
+
+
+.intext:hover {
+    border-color:orange;
+}
+
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+
+    width: 30px;
+    height: 30px;
+}
+
+.incheck {
+    opacity: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+
+    background-color: white;
+    border: 2px solid lightgrey;
+    border-radius: 2px;
+}
+
+.checkmark:hover {
+    background-color: rgba(250,250,250);
+    border-color: orange;
+}
+
+.incheck:checked ~ .checkmark{
+    background-color: deepskyblue;
+    border-color: darkslateblue;
+}
+/*
+    Fin_Classes
+ */
+
+
+/*
+    ID
+ */
+#page {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+
+#main_content {
+    width: 100%;
+    border:3px solid black;
+}
+
+
+#vanessa {
+    width: 15%;
+    background-color: rgba(200,150,0,255);
+    border:3px solid rgba(200,150,0,255);
+}
+
+
+#center_square {
+    position: relative;
+    width: 700px;
+    height: 500px;
+
+    border:2px solid rgba(200,200,200,250);
+    border-radius: 20px;
+
+    background-color: rgba(240,240,240,250);
+
+    padding: 50px;
+    margin: 10px;
+}
+
+#logo_site {
+    padding: 5px;
+}
+/*
+    Fin_ID
+ */
+
+/*
+    Prioritaire
+ */
+.right *{
+    height : 100%;
+    border : none;
+    border-radius: 0px;
+}
+
+
+.left *{
+    height: 100%;
+    border : none;
+    border-radius: 0px;
+}
+
+
+header .button {
+    background: rgb(220,150,200);
+}
+
+
+header .button:hover {
+    background: rgb(230,140,200);
+}
+
+#logo {
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/*
+    Fin_Prioritaire
+ */

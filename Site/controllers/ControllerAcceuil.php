@@ -12,19 +12,17 @@ class ControllerAcceuil
             throw new Exception('Page introuvable');
         else
 
-
-
         $this->Acceuil();
     }
 
    public function Acceuil()
     {
-
         $this->_modelMessage = new ModelMessage();
         $messages = $this->_modelMessage->getMessage();
         $this->_view = new viewAcceuil($messages);
         $this->_view->echoHead();
-        $this->_view->page_header();
+        $this->_view->echoHeader();
         $this->_view->getContenu();
+        $this->_view->echoTail();
     }
 }
