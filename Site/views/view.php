@@ -44,7 +44,7 @@ abstract class view
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
                             <input class="button" type="submit" name="action" id="connecter" value="connexion">
                         </form>
-                        <form action="../index.php" method="post"><input class="button" type="submit" name="action" value="creationPage"></form>
+                        <form method="post"><input class="button" type="submit" name="action" value="creationPage"></form>
             ';
         }
         else

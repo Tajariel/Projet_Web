@@ -28,7 +28,6 @@ class viewParams extends view
             </form>
         </div>
     </div>';
-        ';
     }
 }
 
