@@ -83,6 +83,41 @@ class ModelMessage extends Model
 
     }
 
+    public function changeEmoji($emoji, $user_id, $id_message)
+    {
+
+        $increment = $this->hasUsed($id_message, $user_id, $emoji) ? -1 : 1;
+
+
+        if($increment == 1){
+            $querry = 'INSERT INTO emoji VALUES 
+            ('.$user_id.','.$id_message.',\''.$emoji.'\')';
+        } else {
+            $querry = 'DELETE FROM emoji 
+            WHERE id_message = '.$id_message.' 
+            AND emoji_name ='.$emoji.' 
+            AND id_user ='.$user_id;
+        }
+
+        self::$_db->beginTransaction();
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        $querry = 'UPDATE emoji_count 
+        SET quantite = quantite +('.$increment.') 
+        WHERE id_message = '.$id_message.' 
+        AND emoji_name ='.$emoji;
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        self::$_db->commit();
+
+    }
+
     public function hasUsed($id_message, $id_user, $emoji)
     {
 
