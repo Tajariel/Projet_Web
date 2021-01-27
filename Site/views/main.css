@@ -240,10 +240,14 @@ input[type=text]:focus {
     border:2px solid rgba(200,200,200,250);
     border-radius: 20px;
 
-    background-color: rgba(240,240,240,250);
+    background-color: rgba(200,200,200,0.2);
 
     padding: 50px;
     margin: 10px;
+}
+
+#center_square input[type=text], #center_square input[type=password], #center_square input[type=submit]{
+    background : rgb(45,50,50);
 }
 
 
