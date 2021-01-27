@@ -38,13 +38,13 @@ class viewAcceuil extends view{
 
     public function echoMessagePost() {
 
-        if(isset($_POST['Envoyer']) && isset($_SESSION['type']) && $_SESSION['type'] == "SUPER_ADMIN")
+        if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
         {
             $this->modelMessage->sendMessage($_POST['vanessa_post']);
-            header('Location:'.$_SERVER['HTTP_REFERER']);
+            unset($_POST['vanessa_post']);
         }
 
-        if(isset($_SESSION['type']) && $_SESSION['type'] == "SUPER_ADMIN") // if vanessa
+        if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN") // if vanessa
             echo '
                 <article id="vanessaPost">
                     <form method="post">
