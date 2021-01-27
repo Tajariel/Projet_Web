@@ -11,7 +11,7 @@ class ControllerManageUser
         $this ->_modelUser = new ModelUser();
 
         if($_POST['action'] == 'deconnexion'){
-            unset( $_SESSION['connexion']);
+            unset($_SESSION['user']);
 
             $_POST['redirection'] = 'acceuil';
             header('Location: index.php');
@@ -23,6 +23,8 @@ class ControllerManageUser
 
         elseif ($_POST['action'] == 'creation'){
             $this->creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
+        }
+        elseif ($_POST['action'] == 'creationPage'){
             $this->AccountCreationPage();
         }
 
@@ -48,8 +50,8 @@ class ControllerManageUser
 
             $result = $this->_modelUser->getUser($pseudo);
 
-            if ($result && $this->_modelUser->checkPassword($result->getIdUser(), $password)) {
-                $_SESSION['user'] = new User($result);
+            if ($result && $this->_modelUser->checkPassword($result['id_user'], $password)) {
+                $_SESSION['user'] = $result;
 
             } else {
                 $_SESSION['message'] = 'Mauvais identifiants';

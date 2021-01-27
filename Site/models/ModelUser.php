@@ -23,7 +23,7 @@ class ModelUser extends Model
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-        return new User($stmt->fetch());
+        return $stmt->fetch();
     }
 
     public function checkPassword($id, $password)
