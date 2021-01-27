@@ -21,7 +21,9 @@ abstract class view
             <header>
                 <div class="left">
                     <div id="logo_site">
-                        <img id="logo" src="ressource/logo.png" alt="Logo">
+                        <form class="redirect" method="post">
+                            <button class="redirection" type="submit" name="action" value="create"><img id="logo" src="ressource/logo.png" alt="Logo"></button>
+                        </form>
                     </div>
                     <div id="dons">
                         <a href="dons.php"><button class="button">Dons</button></a>
