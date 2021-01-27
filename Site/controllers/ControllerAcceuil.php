@@ -8,6 +8,10 @@ class ControllerAcceuil
     public function __construct()
     {
 
+        if($_POST['action'] == 'emoji')
+        {
+                $this->_modelMessage->changeEmoji($_POST['emoji'], $_POST['user']['id_user'], $_POST['id_message']);
+        }
 
         $this->Acceuil();
     }
