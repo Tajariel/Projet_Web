@@ -89,15 +89,23 @@ class viewAcceuil extends view{
                     '</p>
                 </div>
                 <div class="bottom">
-                    <p>';
+                    <div>
+                        <p>';
             
             echo $tempMessage['date'];
 
             echo '
-                    </p>
-                    <p>
-                        Emoji??????
-                    </p>
+                        </p>
+                    </div>
+                    <div class="divemoji">
+                        <button class="emoji"><p>&#x1F496;</p><p>1</p></button>
+                        
+                        <button class="emoji"><p>&#x1F63B;</p><p>2</p></button>
+                        
+                        <button class="emoji"><p>&#x1FA78;</p><p>3</p></button>
+                        
+                        <button class="emoji"><p>&#x1F60E;</p><p>4</p></button>
+                    </div>
                 </div>
             </article>
         ';
