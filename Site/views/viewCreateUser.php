@@ -22,7 +22,11 @@ class viewCreateUser extends view
 
                 <p><label for="passwordbis">Rentrez votre mot de passe une seconde fois</label></br>
                     <input class="intext" type="password" name="passwordbis" placeholder="Mot de passe" required></p>
-                <p><label for="conditions">Acceptez les conditions d\'utilisations : <?php customCheckBox("conditions",true)?></label></p>
+                <p><label for="conditions">Acceptez les conditions d\'utilisations :';
+
+        $this->customCheckBox("conditions",true);
+
+                echo '</label></p>
 
             <p><input class="button" type="submit" name="action" id="soumettre" value="creation"></p>
             </form>
