@@ -110,7 +110,7 @@ class viewAcceuil extends view{
     public function echoVanessa() {
         echo '
             <div id="vanessa">
-                <p>Vanessa</p>
+                <img src="ressource/vanessa.jpg">
             </div>
         ';
     }
