@@ -22,7 +22,7 @@ class ControllerManageUser
         }
 
         elseif ($_POST['action'] == 'creation'){
-            $this->creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
+            $this->creation($_POST['pseudo'],$_POST['email'],$_POST['password'], $_POST['passwordbis']);
         }
         elseif ($_POST['action'] == 'creationPage'){
             $this->AccountCreationPage();
@@ -38,7 +38,7 @@ class ControllerManageUser
     {
 
         $this->_view = new viewCreateUser();
-        $this->_view->echoHead();
+        $this->_view->echoHead('Creation de compte');
         $this->_view->echoHeader();
         $this->_view->echoCreateForm();
         $this->_view->echoTail();
@@ -64,7 +64,7 @@ class ControllerManageUser
             return;
         }
 
-
+        $_POST['action'] = 'acceuil';
         header('Location: index.php');
 
     }
@@ -76,15 +76,15 @@ class ControllerManageUser
                 $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
 
                 $_POST['action'] = 'creation';
-                header('Location: ../controllers/Routeur.php');
+                header('Location: index.php');
                 return;
             }
 
-            if (getUser($_POST['pseudo'])->rowCount() != 0) {
+            if ($this->_modelUser->getUser($pseudo)) {
                 $_SESSION['message'] = 'Pseudo déjà utilisé';
 
                 $_POST['action'] = 'creation';
-                header('Location: ../controllers/Routeur.php');
+                header('Location: index.php');
                 return;
             }
 
@@ -93,11 +93,11 @@ class ControllerManageUser
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
             $_POST['action'] = 'creation';
-            header('Location: ../controllers/Routeur.php');
+            header('Location: index.php');
             return;
         }
         $_POST['action'] = 'acceuil';
-        header('Location: ../controllers/Routeur.php');
+        header('Location: index.php');
     }
 }
 

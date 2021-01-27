@@ -10,7 +10,7 @@ class viewCreateUser extends view
         echo '
     <div id="page">
         <div id="center_square">
-            <form action="controllers/Router.php" method="get">
+            <form method="post">
                 <p><label for="pseudo">Pseudo</label></br>
                     <input class="intext" type="text" name="pseudo" placeholder="Pseudo" required></p>
 

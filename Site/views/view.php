@@ -39,12 +39,12 @@ abstract class view
         if(!isset($_SESSION['user']))
         {
             echo '
-                        <form action="../index.php" method="post">
+                        <form method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
                             <input class="button" type="submit" name="action" id="connecter" value="connexion">
                         </form>
-                        <a href="../php/create_user.php"><button class="button">Créer un compte</button></a>
+                        <form action="../index.php" method="post"><input class="button" type="submit" name="action" value="creationPage"></form>
             ';
         }
         else
