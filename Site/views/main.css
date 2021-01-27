@@ -77,6 +77,8 @@ section article{
 
     border: 3px solid rgba(10,10,10,0);
 
+    background: rgba(200,200,200,0.2);
+
     height: auto;
     width: 100%;
     padding:5px;
@@ -89,6 +91,7 @@ section article{
 section article:hover{
     border: 3px solid rgb(55,60,60);
     border-radius: 2px;
+    background: rgba(200,200,200,0.3);
 }
 
 section article div{
@@ -98,6 +101,11 @@ section article div{
 
     display: flex;
 }
+
+input[type=text]:focus {
+    border-color: rgba(150,150,150,0.2);
+}
+
 /*
     Fin_General
  */
@@ -124,7 +132,6 @@ section article div{
 .intext {
     padding: 5px;
 
-    border-radius: 7px;
     border-color:darkgrey;
 }
 
@@ -274,6 +281,40 @@ section article div{
 #connect button{
     width: 100%;
 }
+
+#vanessaPost {
+
+}
+
+#vanessaPost input[type=text] {
+    width : 100%;
+
+    background: rgb(45,50,50);
+
+    border-radius: 0px;
+}
+
+#vanessaPost input[type=submit] {
+    margin: 5px;
+    height: 25px;
+    width: 10%;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    background: rgb(45,50,50);
+
+    border-width: 0px;
+}
+
+#vanessaPost input[type=submit]:hover {
+    background: rgba(45,50,50,0.7);
+}
+
+#vanessaPost input[type=text]:hover {
+    background: rgba(45,50,50,0.8);
+}
+
+
 
 /*
     Fin_ID
