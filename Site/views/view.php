@@ -52,7 +52,7 @@ abstract class view
             echo '
                         <a href="parametre.php"><button class="button">Parametre</button></a>
                         <label>Pseudo</label>
-                        <form action="../index.php" method="post"><input class="button" type="submit" name="action" value="deconnexion"></form>
+                        <form method="post"><input class="button" type="submit" name="action" value="deconnexion"></form>
             ';
         }
         echo '
