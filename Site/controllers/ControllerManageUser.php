@@ -13,7 +13,7 @@ class ControllerManageUser
         if($_POST['action'] == 'deconnexion'){
             unset($_SESSION['user']);
 
-            $_POST['redirection'] = 'acceuil';
+            $_POST['action'] = 'acceuil';
             header('Location: index.php');
         }
 
@@ -59,7 +59,7 @@ class ControllerManageUser
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
 
-            $_POST['redirection'] = 'acceuil';
+            $_POST['action'] = 'acceuil';
             header('Location: index.php');
             return;
         }
@@ -75,7 +75,7 @@ class ControllerManageUser
             if ($password != $passwordbis) {
                 $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
 
-                $_POST['redirection'] = 'creation';
+                $_POST['action'] = 'creation';
                 header('Location: ../controllers/Routeur.php');
                 return;
             }
@@ -83,7 +83,7 @@ class ControllerManageUser
             if (getUser($_POST['pseudo'])->rowCount() != 0) {
                 $_SESSION['message'] = 'Pseudo déjà utilisé';
 
-                $_POST['redirection'] = 'creation';
+                $_POST['action'] = 'creation';
                 header('Location: ../controllers/Routeur.php');
                 return;
             }
@@ -92,11 +92,11 @@ class ControllerManageUser
 
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
-            $_POST['redirection'] = 'creation';
+            $_POST['action'] = 'creation';
             header('Location: ../controllers/Routeur.php');
             return;
         }
-        $_POST['redirection'] = 'acceuil';
+        $_POST['action'] = 'acceuil';
         header('Location: ../controllers/Routeur.php');
     }
 }
