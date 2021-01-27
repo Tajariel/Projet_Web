@@ -44,7 +44,7 @@ class Router{
                         $this->_ctrl = new ControllerManageUser();
                         break;
                     case 'deconnexion':
-                        $this->_ctrl = new ControllerAcceuil();
+                        $this->_ctrl = new ControllerManageUser();
                         break;
                     case 'creationPage':
                         $this->_ctrl = new ControllerAcceuil();

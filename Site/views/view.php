@@ -22,7 +22,7 @@ abstract class view
                 <div class="left">
                     <div id="logo_site">
                         <form class="redirect" method="post">
-                            <button class="redirection" type="submit" name="action" value="acceuil"><img id="logo" src="ressource/logo.png" alt="Logo"></button>
+                            <button class="redirection" type="submit" name="action" value="create"><img id="logo" src="ressource/logo.png" alt="Logo"></button>
                         </form>
                     </div>
                     <div id="dons">
@@ -39,20 +39,20 @@ abstract class view
         if(!isset($_SESSION['user']))
         {
             echo '
-                        <form method="post">
+                        <form action="../index.php" method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
                             <input class="button" type="submit" name="action" id="connecter" value="connexion">
                         </form>
-                        <form method="post"><button class="button" type="submit" name="action" value="creationPage">Créer un compte</button></form>
+                        <a href="../php/create_user.php"><button class="button">Créer un compte</button></a>
             ';
         }
         else
         {
             echo '
-                        <form method="post"><button class="button" type="submit" name="action" value="NULL">Parametre</button></form>
+                        <a href="parametre.php"><button class="button">Parametre</button></a>
                         <label>Pseudo</label>
-                        <button class="button" type="submit" name="action" value="deconnexion">Se déconnecter</button>
+                        <form action="../index.php" method="post"><input class="button" type="submit" name="action" value="deconnexion"></form>
             ';
         }
         echo '
