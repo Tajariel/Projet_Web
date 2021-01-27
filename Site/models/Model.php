@@ -47,18 +47,7 @@ abstract class Model
         return $data;
     }
 
-    public function changeParam($id, $column, $val)
-    {
-        $querry = 'UPDATE user SET '.$column.' = :val WHERE id_user = '.$id;
 
-        $stmt = self::$_db->prepare($querry);
-
-        $stmt->bindValue('val', $val, PDO::PARAM_STR);
-
-        self::$_db->beginTransaction();
-        $stmt->execute();
-        self::$_db->commit();
-    }
 
 
 

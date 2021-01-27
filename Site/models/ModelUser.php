@@ -43,7 +43,24 @@ class ModelUser extends Model
         return password_verify($password, $stmt->fetch()['mdp']);
     }
 
+    public function changeParam($id, $column, $val, $password)
+    {
+        if(!$this->checkPassword($id, $password)){
+            $_SESSION['message'] = 'Mot de passe invalide.';
+            $_POST['action'] = 'acceuil';
+            header('Location: index.php');
+        }
 
+        $querry = 'UPDATE user SET '.$column.' = :val WHERE id_user = '.$id;
+
+        $stmt = self::$_db->prepare($querry);
+
+        $stmt->bindValue('val', $val, PDO::PARAM_STR);
+
+        self::$_db->beginTransaction();
+        $stmt->execute();
+        self::$_db->commit();
+    }
 
     public function createUser($pseudo, $email, $password)
     {
