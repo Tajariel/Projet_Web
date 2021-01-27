@@ -51,6 +51,9 @@ class Router{
                     case 'creation':
                         $this->_ctrl = new ControllerManageUser();
                         break;
+                    case 'parametre':
+                        $this->_ctrl = new ControllerParams();
+                        break;
                     default:
                         $this->_ctrl = new ControllerAcceuil();
 

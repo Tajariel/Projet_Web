@@ -50,7 +50,7 @@ abstract class view
         else
         {
             echo '
-                        <a href="parametre.php"><button class="button">Parametre</button></a>
+                        <form method="post"><button class="button" type="submit" name="action" value="parametre">Parametre</button></form>
                         <label>'.$_SESSION['user']['pseudo'].'</label>
                         <form method="post"><input class="button" type="submit" name="action" value="deconnexion"></form>
             ';
