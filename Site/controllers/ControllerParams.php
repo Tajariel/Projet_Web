@@ -15,6 +15,8 @@ class ControllerParams
     {
         $this->_modelUser = new ModelUser();
 
+        $this->_view = new viewParams();
+
         $titre = 'Paramètre';
 
         $this->_view->echoHead($titre);
