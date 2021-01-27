@@ -191,6 +191,18 @@ input[type=text]:focus {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.redirection {
+    background: rgba(0,0,0,0);
+    padding: 0px;
+    margin: 0px;
+}
+
+.redirect {
+    padding: 0px;
+    margin: 0px;
+    background: rgba(0,0,0,0);
+}
 /*
     Fin_Classes
  */
