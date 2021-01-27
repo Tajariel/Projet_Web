@@ -8,7 +8,7 @@ if (!isset($_POST['redirection'])) {
     $router = new Router();
 }
 
-
+//unset($_SESSION['user']);
 
 $router->routeReq();
 

@@ -64,7 +64,7 @@ class ControllerManageUser
             return;
         }
 
-        $_POST['acceuil'];
+
         header('Location: index.php');
 
     }

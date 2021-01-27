@@ -21,7 +21,9 @@ abstract class view
             <header>
                 <div class="left">
                     <div id="logo_site">
-                        <img id="logo" src="ressource/logo.png" alt="Logo">
+                        <form class="redirect" method="post">
+                            <button class="redirection" type="submit" name="action" value="acceuil"><img id="logo" src="ressource/logo.png" alt="Logo"></button>
+                        </form>
                     </div>
                     <div id="dons">
                         <a href="dons.php"><button class="button">Dons</button></a>
@@ -37,20 +39,20 @@ abstract class view
         if(!isset($_SESSION['user']))
         {
             echo '
-                        <form action="../index.php" method="post">
+                        <form method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
                             <input class="button" type="submit" name="action" id="connecter" value="connexion">
                         </form>
-                        <a href="../php/create_user.php"><button class="button">Créer un compte</button></a>
+                        <form method="post"><button class="button" type="submit" name="action" value="creationPage">Créer un compte</button></form>
             ';
         }
         else
         {
             echo '
-                        <a href="parametre.php"><button class="button">Parametre</button></a>
+                        <form method="post"><button class="button" type="submit" name="action" value="NULL">Parametre</button></form>
                         <label>Pseudo</label>
-                        <button class="button">Se déconnecter</button>
+                        <button class="button" type="submit" name="action" value="deconnexion">Se déconnecter</button>
             ';
         }
         echo '
