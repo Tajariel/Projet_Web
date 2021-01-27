@@ -51,7 +51,7 @@ abstract class view
         {
             echo '
                         <a href="parametre.php"><button class="button">Parametre</button></a>
-                        <label>Pseudo</label>
+                        <label>'.$_SESSION['user']['pseudo'].'</label>
                         <form method="post"><input class="button" type="submit" name="action" value="deconnexion"></form>
             ';
         }
@@ -68,7 +68,7 @@ abstract class view
         echo '
             <label class="container"><input class="incheck" type="checkbox" name="'.$name.'" ';
 
-        if($bool==true)
+        if($bool)
             echo 'required';
 
         echo '>
