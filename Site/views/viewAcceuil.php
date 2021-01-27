@@ -61,7 +61,7 @@ class viewAcceuil extends view{
     }
 
     public function echoArticles() {
-        $nbElement = 20;
+        $nbElement = 2;
 
         for ($i = 0 ; $i < $nbElement ; $i++)
         {
