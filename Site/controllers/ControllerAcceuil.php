@@ -24,6 +24,7 @@ class ControllerAcceuil
         $this->_view->echoNav();
         $this->_view->echoStartMainContent();
 
+        $this->_view->echoMessagePost();
         $this->_view->echoArticles();
 
         $this->_view->echoEndMainContent();

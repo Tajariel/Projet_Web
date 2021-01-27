@@ -17,6 +17,35 @@ class ModelMessage extends Model
 
     }
 
+    public function sendMessage($message) {
+        if(strlen($message) > 50)
+            return false;
+
+        else
+        {
+            $querry = 'INSERT INTO message(date,contenu) VALUES (CURRENT_DATE,\''.$message.'\')';
+
+            $stmt = $this->getDB()->prepare($querry);
+
+            return $stmt->execute();
+        }
+    }
+
+    public function exist($ID) {
+        $querry = 'SELECT id_Message FROM message WHERE id_Message = '.$ID.'';
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+        if ($stmt->fetch()['id_Message'] != '')
+            return true;
+        else
+            return false;
+    }
+
     public function getMessage()
     {
         $this->getDB();

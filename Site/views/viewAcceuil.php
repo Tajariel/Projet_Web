@@ -36,11 +36,37 @@ class viewAcceuil extends view{
 
     }
 
+    public function echoMessagePost() {
+
+        if(isset($_POST['Envoyer']) && isset($_SESSION['type']) && $_SESSION['type'] == "SUPER_ADMIN")
+        {
+            $this->modelMessage->sendMessage($_POST['vanessa_post']);
+            header('Location:'.$_SERVER['HTTP_REFERER']);
+        }
+
+        if(isset($_SESSION['type']) && $_SESSION['type'] == "SUPER_ADMIN") // if vanessa
+            echo '
+                <article id="vanessaPost">
+                    <form method="post">
+                        <div class="top">
+                            <input type="text" name="vanessa_post" maxlength="50" placeholder="Partage ta vie ! (50 car max)" required>
+                        </div>
+                        <div class="bottom">
+                            <div class="gap"></div>
+                            <input type="submit" name="Envoyer">
+                        </div>
+                    </form>
+                </article>
+            ';
+    }
+
     public function echoArticles() {
-        $nbElement = 4;
+        $nbElement = 20;
 
         for ($i = 0 ; $i < $nbElement ; $i++)
         {
+            while(!$this->modelMessage->exist($this->IDmessage) && $this->IDmessage != 0)
+                $this->IDmessage--;
             if ($this->IDmessage == 0 || $this->IDmessage > $this->modelMessage->getMaxID())
                 break;
             $tempMessage = $this->modelMessage->getFromID($this->IDmessage);
