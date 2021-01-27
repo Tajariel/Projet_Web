@@ -23,6 +23,8 @@ class ControllerManageUser
 
         elseif ($_POST['action'] == 'creation'){
             $this->creation($_POST['pseudo'],$_POST['password'], $_POST['passwordbis']);
+        }
+        elseif ($_POST['action'] == 'creationPage'){
             $this->AccountCreationPage();
         }
 
