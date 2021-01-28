@@ -7,10 +7,11 @@ class ControllerAcceuil
 
     public function __construct()
     {
+        $this->_modelMessage = new ModelMessage();
 
-        if($_POST['action'] == 'emoji')
+        if(isset($_POST['action']) && $_POST['action'] == 'changeEmoji')
         {
-                $this->_modelMessage->changeEmoji($_POST['emoji'], $_POST['user']['id_user'], $_POST['id_message']);
+                $this->_modelMessage->changeEmoji($_POST['emoji'], $_SESSION['user']['id_user'], $_POST['id_message']);
         }
 
         $this->Acceuil();
@@ -18,7 +19,7 @@ class ControllerAcceuil
 
    public function Acceuil()
     {
-        $this->_modelMessage = new ModelMessage();
+
 
         $this->_view = new viewAcceuil($this->_modelMessage);
         $titre = 'Acceuil';

@@ -34,7 +34,6 @@ class Router{
             if(isset($_POST['action']))
             {
 
-
                 switch ($_POST['action']) {
                     case 'acceuil':
                         $this->_ctrl = new ControllerAcceuil();
@@ -62,6 +61,9 @@ class Router{
                         break;
                     case 'email':
                         $this->_ctrl = new ControllerParams();
+                        break;
+                    case 'changeEmoji':
+                        $this->_ctrl = new ControllerAcceuil();
                         break;
                     default:
                         $this->_ctrl = new ControllerAcceuil();

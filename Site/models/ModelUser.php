@@ -47,7 +47,7 @@ class ModelUser extends Model
     {
         if(!$this->checkPassword($id, $password)){
             $_SESSION['message'] = 'Mot de passe invalide.';
-            $_POST['action'] = 'acceuil';
+            $_POST['action'] = 'param';
             header('Location: index.php');
         }
 

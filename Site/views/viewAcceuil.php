@@ -99,13 +99,22 @@ class viewAcceuil extends view{
                         </p>
                     </div>
                     <div class="divemoji">
-                        <button class="emoji"><p>&#x1F496;</p><p>1</p></button>
-                        
-                        <button class="emoji"><p>&#x1F63B;</p><p>2</p></button>
-                        
-                        <button class="emoji"><p>&#x1FA78;</p><p>3</p></button>
-                        
-                        <button class="emoji"><p>&#x1F60E;</p><p>4</p></button>
+                        <form method="post" class="redirect">
+                            <input type="hidden" name="emoji" value="love"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
+                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1F496;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'love').'</p></button>
+                        </form>
+                        <form method="post" class="redirect">
+                            <input type="hidden" name="emoji" value="cute"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
+                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1F63B;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'cute').'</p></button>
+                        </form>
+                        <form method="post" class="redirect"> 
+                            <input type="hidden" name="emoji" value="trop_style"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
+                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1FA78;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'trop_style').'</p></button>
+                        </form>
+                        <form method="post" class="redirect">
+                            <input type="hidden" name="emoji" value="swag"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
+                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1F60E;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'swag').'</p></button>
+                        </form>
                     </div>
                 </div>
             </article>
