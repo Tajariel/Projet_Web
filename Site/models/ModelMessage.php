@@ -98,7 +98,7 @@ class ModelMessage extends Model
             AND id_user ='.$user_id;
         }
 
-        self::$_db->beginTransaction();
+        $this->getDB()->beginTransaction();
 
         $stmt = $this->getDB()->prepare($querry);
 
@@ -113,7 +113,7 @@ class ModelMessage extends Model
 
         $stmt->execute();
 
-        self::$_db->commit();
+        $this->getDB()->commit();
 
     }
 

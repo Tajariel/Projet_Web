@@ -8,7 +8,20 @@ class ControllerParams
 
     public function __construct()
     {
-        $this->Params();
+        $this->_modelUser = new ModelUser();
+        switch ($_POST['action']){
+            case 'parametre':
+                $this->Params();
+                break;
+            case 'pseudo':
+                $this->_modelUser->changeParam($_SESSION['user']['id_user'],'pseudo',$_POST['new_pseudo'],$_POST['old_password']);
+                $_SESSION['user']['pseudo'] = $_POST['new_pseudo'];
+                break;
+            case 'email':
+                $this->_modelUser->changeParam($_SESSION['user']['id_user'],'email',$_POST['new_email'],$_POST['old_password']);
+                $_SESSION['user']['email'] = $_POST['new_email'];
+                break;
+        }
     }
 
     public function Params()
