@@ -97,6 +97,24 @@ class ModelMessage extends Model
 
     private function incrementEmojiCount($emoji, $id_message, $ammount)
     {
+        $querry = 'SELECT * FROM emoji_count
+                WHERE id_message = '.$id_message.' 
+                AND emoji_name =\''.$emoji.'\'' ;
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        if($stmt->rowcount() ==0){
+            $querry = 'INSERT INTO emoji_count VALUES 
+                ('.$id_message.',\''.$emoji .'\',1)';
+
+            $stmt = $this->getDB()->prepare($querry);
+
+            $stmt->execute();
+
+        } else {
+
         $querry = 'UPDATE emoji_count 
                 SET quantite = quantite +('.$ammount.') 
                 WHERE id_message = '.$id_message.' 
@@ -105,6 +123,8 @@ class ModelMessage extends Model
         $stmt = $this->getDB()->prepare($querry);
 
         $stmt->execute();
+
+        }
     }
 
     public function changeEmoji($emoji, $user_id, $id_message)
