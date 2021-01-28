@@ -16,10 +16,12 @@ class ControllerParams
             case 'pseudo':
                 $this->_modelUser->changeParam($_SESSION['user']['id_user'],'pseudo',$_POST['new_pseudo'],$_POST['old_password']);
                 $_SESSION['user']['pseudo'] = $_POST['new_pseudo'];
+                $this->Params();
                 break;
             case 'email':
                 $this->_modelUser->changeParam($_SESSION['user']['id_user'],'email',$_POST['new_email'],$_POST['old_password']);
                 $_SESSION['user']['email'] = $_POST['new_email'];
+                $this->Params();
                 break;
         }
     }
