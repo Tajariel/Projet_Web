@@ -54,6 +54,12 @@ class Router{
                     case 'parametre':
                         $this->_ctrl = new ControllerParams();
                         break;
+                    case 'pseudo':
+                        $this->_ctrl = new ControllerParams();
+                        break;
+                    case 'email':
+                        $this->_ctrl = new ControllerParams();
+                        break;
                     default:
                         $this->_ctrl = new ControllerAcceuil();
 

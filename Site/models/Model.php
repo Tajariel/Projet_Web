@@ -25,7 +25,7 @@ abstract class Model
 
     protected function getAll ($table, $obj){
         $var = [];
-        $que = self::$_db->prepare('SELECT * FROM '.$table.' ORDER BY id_Message desc');
+        $que = $this->getDB()->prepare('SELECT * FROM '.$table.' ORDER BY id_Message desc');
         $que->execute();
         while($data = $que->fetch(PDO::FETCH_ASSOC))
         {
@@ -39,7 +39,7 @@ abstract class Model
     protected function getOne ($table, $obj, $id){
 
         $var = [];
-        $que = self::$_db->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');
+        $que = $this->getDB()->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');
         $que->bindValue('id', $id);
         $que->execute();
         $data = $que->fetch(PDO::FETCH_ASSOC);

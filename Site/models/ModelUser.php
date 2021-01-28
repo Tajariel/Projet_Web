@@ -30,7 +30,7 @@ class ModelUser extends Model
     {
         $querry = 'SELECT mdp FROM user WHERE id_user = :psd';
 
-        $stmt = self::$_db->prepare($querry);
+        $stmt = $this->getDB()->prepare($querry);
 
         $stmt->bindValue('psd', $id, PDO::PARAM_STR);
 
@@ -53,28 +53,28 @@ class ModelUser extends Model
 
         $querry = 'UPDATE user SET '.$column.' = :val WHERE id_user = '.$id;
 
-        $stmt = self::$_db->prepare($querry);
+        $stmt = $this->getDB()->prepare($querry);
 
         $stmt->bindValue('val', $val, PDO::PARAM_STR);
 
-        self::$_db->beginTransaction();
+        $this->getDB()->beginTransaction();
         $stmt->execute();
-        self::$_db->commit();
+        $this->getDB()->commit();
     }
 
     public function createUser($pseudo, $email, $password)
     {
         $querry = 'INSERT INTO user (pseudo, email, mdp, type)  VALUES (:pseudo, :email, :password, \'MEMBER\')';
-        $stmt = self::$_db->prepare($querry);
+        $stmt = $this->getDB()->prepare($querry);
 
         $stmt->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
         $stmt->bindValue('email', $email, PDO::PARAM_STR);
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
         $stmt->bindValue('password', $hashedPass, PDO::PARAM_STR);
 
-        self::$_db->beginTransaction();
+        $this->getDB()->beginTransaction();
         $stmt->execute();
-        self::$_db->commit();
+        $this->getDB()->commit();
     }
 
 }
