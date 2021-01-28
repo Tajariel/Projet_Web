@@ -1,0 +1,38 @@
+__Nom d'équipe :__
+ Les goblins du derrière
+
+
+__Membres :__
+	- AMBAUD Marc
+	- FURTER-ALPHAND Manuel
+	- LARSONNEUR Ugo
+	- PUPET Gaëtan
+
+
+__URL du site :__
+http://mfa.alwaysdata.net/
+
+
+__Présentation concise du projet réalisé :__
+
+Lors de ce projet, nous devions réalisé un site web pour Vanestarre, lui permettant de partager sa vie à ses 5 fans !
+Pour ce faire, nous avons utilisé différent outils pour simplifier notre travail, comme Git, ou un serveur discord pour faciliter la communication et le partage dans le groupe.
+Malheuresement, nous n'avons pas pu réaliser toute les fonctionnalités demandé, un peu par manque de temps, mais avant tout par un manque de compétence dans le domaine, malgrè tout, nous avons esssayé de faire en sorte que ce qui a été implémenté fonctionne correctement, afin de rendre le site le propre possible.
+
+
+
+__Choix techniques :__
+
+
+
+__Configuration logicielle recommandée :__
+
+Avoir un PC ?
+Le site n'est pas lourd, et même si nous ne sommes pas sûrs, on pense qu'il fonctionne correctement sur la plupart des navigateurs et systèmes.
+
+
+
+__Ensemble des identifiants de connexion :__
+	- 
+	- 
+	- 
