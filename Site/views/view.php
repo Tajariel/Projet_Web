@@ -50,9 +50,9 @@ abstract class view
         else
         {
             echo '
-                        <form method="post"><button class="button" type="submit" name="action" value="parametre">Parametre</button></form>
+                        <form method="post"><button class="button" type="submit" name="action" value="Paramètre">Paramètre</button></form>
                         <label>'.$_SESSION['user']['pseudo'].'</label>
-                        <form method="post"><input class="button" type="submit" name="action" value="Déconexion"></form>
+                        <form method="post"><input class="button" type="submit" name="action" value="Déconnexion"></form>
             ';
         }
         echo '

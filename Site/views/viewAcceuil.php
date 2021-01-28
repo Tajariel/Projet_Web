@@ -124,14 +124,6 @@ class viewAcceuil extends view{
         ';
     }
 
-    public function echoContenu()
-    {
 
-        foreach ($this->_messages as $message) {
-            echo $message->getContenu();
-            echo $message->getContenu();
-            echo $message->getContenu();
-        }
-    }
 
 }

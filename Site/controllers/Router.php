@@ -48,14 +48,17 @@ class Router{
                     case 'Création de compte':
                         $this->_ctrl = new ControllerManageUser();
                         break;
-                    case 'creation':
+                    case 'Création':
                         $this->_ctrl = new ControllerManageUser();
                         break;
-                    case 'parametre':
+                    case 'Paramètre':
                         $this->_ctrl = new ControllerParams();
                         break;
                     case  'paramPage':
                         $this->_ctrl = new ControllerParams();
+                        break;
+                    case  'Dons':
+                        $this->_ctrl = new ControllerDons();
                         break;
                     default:
                         $this->_ctrl = new ControllerAcceuil();
