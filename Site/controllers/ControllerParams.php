@@ -10,7 +10,7 @@ class ControllerParams
     {
         $this->_modelUser = new ModelUser();
         switch ($_POST['action']){
-            case 'parametre':
+            case 'Paramètre':
                 $this->Params();
                 break;
             case 'pseudo':
