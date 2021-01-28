@@ -94,6 +94,7 @@ abstract class view
 
     public function echoEndPage()
     {
+        //unset($_POST);
         echo '
             </div>
         ';

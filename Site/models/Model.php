@@ -8,8 +8,8 @@ abstract class Model
     // INSTANCIE CONNEXION DB
     private function setDB()
     {
-        $dsn = 'mysql:host=mysql-mfa.alwaysdata.net;dbname=mfa_simp-land_db';
-        self::$_db = new PDO($dsn, 'mfa', 'mdp_dtb');
+        $dsn = 'mysql:host=localhost;dbname=simp-land_db';
+        self::$_db = new PDO($dsn, 'root', '');
 
 
         self::$_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
@@ -36,7 +36,7 @@ abstract class Model
         $que->closeCursor();
     }
 
-    protected function getOne ($table, $obj, $id){
+    protected function getOne ($table, $id){
 
         $var = [];
         $que = $this->getDB()->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');

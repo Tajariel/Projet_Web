@@ -23,6 +23,8 @@ class ModelMessage extends Model
 
         else
         {
+            self::$_db->beginTransaction();
+
             $querry = 'INSERT INTO message(date,contenu) VALUES (CURRENT_DATE,\''.$message.'\')';
 
             $stmt = $this->getDB()->prepare($querry);
@@ -58,23 +60,25 @@ class ModelMessage extends Model
         if ($id == NULL)
             $id = 1;
 
-        return $this->getOne('message','Message',$id);
+        return $this->getOne('message',$id);
 
     }
 
     public function getFromID($id){
         $this->getDB();
-        return $this->getOne('message','Message',$id);
+        return $this->getOne('message',$id);
     }
 
     public function getEmojiCount($id, $emoji)
     {
 
-        $querry = 'SELECT quantite FROM emoji_count WHERE nom_emoji = '.$emoji.' AND id_message ='.$id;
+        $querry = 'SELECT quantite FROM emoji_count WHERE emoji_name = \''.$emoji.'\' AND id_message = '.$id;
 
         $stmt = $this->getDB()->prepare($querry);
 
         $stmt->execute();
+
+        if($stmt->rowcount() == 0 ) return 0;
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -94,7 +98,7 @@ class ModelMessage extends Model
         } else {
             $querry = 'DELETE FROM emoji 
             WHERE id_message = '.$id_message.' 
-            AND emoji_name ='.$emoji.' 
+            AND emoji_name =\''.$emoji.'\'  
             AND id_user ='.$user_id;
         }
 
@@ -104,10 +108,25 @@ class ModelMessage extends Model
 
         $stmt->execute();
 
-        $querry = 'UPDATE emoji_count 
-        SET quantite = quantite +('.$increment.') 
-        WHERE id_message = '.$id_message.' 
-        AND emoji_name ='.$emoji;
+        $querry = 'SELECT * FROM emoji_count 
+            WHERE id_message = '.$id_message.' 
+            AND emoji_name =\''.$emoji.'\'';
+
+        $stmt = $this->getDB()->prepare($querry);
+        $stmt->execute();
+
+        if($stmt->rowcount() == 0)
+        {
+            $querry = 'INSERT INTO emoji_count VALUES 
+            ('.$id_message.',\''.$emoji.'\' ,1)';
+        }
+        else
+        {
+            $querry = 'UPDATE emoji_count 
+                SET quantite = quantite +('.$increment.') 
+                WHERE id_message = '.$id_message.' 
+                AND emoji_name =\''.$emoji.'\'' ;
+        }
 
         $stmt = $this->getDB()->prepare($querry);
 
@@ -120,8 +139,8 @@ class ModelMessage extends Model
     public function hasUsed($id_message, $id_user, $emoji)
     {
 
-        $querry = 'SELECT quantite FROM emoji
-                    WHERE emoji_name = '.$emoji.' AND id_message ='.$id_message.' AND id_user ='.$id_user;
+        $querry = 'SELECT * FROM emoji 
+                    WHERE emoji_name = \''.$emoji.'\'  AND id_message ='.$id_message.' AND id_user ='.$id_user;
 
         $stmt = $this->getDB()->prepare($querry);
 
