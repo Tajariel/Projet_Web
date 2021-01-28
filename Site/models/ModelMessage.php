@@ -60,13 +60,13 @@ class ModelMessage extends Model
         if ($id == NULL)
             $id = 1;
 
-        return $this->getOne('message','Message',$id);
+        return $this->getOne('message',$id);
 
     }
 
     public function getFromID($id){
         $this->getDB();
-        return $this->getOne('message','Message',$id);
+        return $this->getOne('message',$id);
     }
 
     public function getEmojiCount($id, $emoji)
