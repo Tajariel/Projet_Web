@@ -9,7 +9,7 @@ class ControllerAcceuil
     {
         $this->_modelMessage = new ModelMessage();
 
-        if(isset($_POST['action']) && $_POST['action'] == 'changeEmoji')
+        if(isset($_POST['action']) && $_POST['action'] == 'changeEmoji' && isset($_SESSION['user']))
         {
                 $this->_modelMessage->changeEmoji($_POST['emoji'], $_SESSION['user']['id_user'], $_POST['id_message']);
         }
