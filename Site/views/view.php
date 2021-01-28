@@ -50,8 +50,8 @@ abstract class view
         else
         {
             echo '
-                        <form method="post"><button class="button" type="submit" name="action" value="Paramètre">Paramètre</button></form>
                         <label>'.$_SESSION['user']['pseudo'].'</label>
+                        <form method="post"><button class="button" type="submit" name="action" value="Paramètre">Paramètre</button></form>
                         <form method="post"><input class="button" type="submit" name="action" value="Déconnexion"></form>
             ';
         }
@@ -94,7 +94,7 @@ abstract class view
 
     public function echoEndPage()
     {
-        //unset($_POST);
+        empty($_POST);
         echo '
             </div>
         ';
