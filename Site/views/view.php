@@ -42,9 +42,9 @@ abstract class view
                         <form method="post">
                             <input class="intext" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
                             <input class="intext" type="password" id="password" name="password" placeholder="Mot de passe" required>
-                            <input class="button" type="submit" name="action" id="connecter" value="connexion">
+                            <input class="button" type="submit" name="action" id="connecter" value="Connexion">
                         </form>
-                        <form method="post"><input class="button" type="submit" name="action" value="creationPage"></form>
+                        <form method="post"><input class="button" type="submit" name="action" value="Création de compte"></form>
             ';
         }
         else
@@ -52,7 +52,7 @@ abstract class view
             echo '
                         <form method="post"><button class="button" type="submit" name="action" value="parametre">Parametre</button></form>
                         <label>'.$_SESSION['user']['pseudo'].'</label>
-                        <form method="post"><input class="button" type="submit" name="action" value="deconnexion"></form>
+                        <form method="post"><input class="button" type="submit" name="action" value="Déconexion"></form>
             ';
         }
         echo '

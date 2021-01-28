@@ -39,19 +39,22 @@ class Router{
                     case 'acceuil':
                         $this->_ctrl = new ControllerAcceuil();
                         break;
-                    case 'connexion':
+                    case 'Connexion':
                         $this->_ctrl = new ControllerManageUser();
                         break;
-                    case 'deconnexion':
+                    case 'Déconnexion':
                         $this->_ctrl = new ControllerManageUser();
                         break;
-                    case 'creationPage':
+                    case 'Création de compte':
                         $this->_ctrl = new ControllerManageUser();
                         break;
                     case 'creation':
                         $this->_ctrl = new ControllerManageUser();
                         break;
                     case 'parametre':
+                        $this->_ctrl = new ControllerParams();
+                        break;
+                    case  'paramPage':
                         $this->_ctrl = new ControllerParams();
                         break;
                     case 'pseudo':

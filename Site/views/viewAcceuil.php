@@ -38,6 +38,7 @@ class viewAcceuil extends view{
 
     public function echoMessagePost() {
 
+
         if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
         {
             $this->modelMessage->sendMessage($_POST['vanessa_post']);
