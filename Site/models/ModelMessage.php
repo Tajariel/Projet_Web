@@ -18,18 +18,24 @@ class ModelMessage extends Model
     }
 
     public function sendMessage($message) {
-        if(strlen($message) > 50)
+
+        if(strlen($message) > 50){
             return false;
+        }
 
         else
         {
-            self::$_db->beginTransaction();
+            $this->getDB()->beginTransaction();
 
             $querry = 'INSERT INTO message(date,contenu) VALUES (CURRENT_DATE,\''.$message.'\')';
 
             $stmt = $this->getDB()->prepare($querry);
 
-            return $stmt->execute();
+            $result = $stmt->execute();
+
+            $this->getDB()->commit();
+
+            return $result;
         }
     }
 
