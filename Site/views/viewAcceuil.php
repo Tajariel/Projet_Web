@@ -16,7 +16,7 @@ class viewAcceuil extends view{
     public function echoNav() {
         echo '
             <nav>
-                <p>#swag</p>
+                <img class="imgvanessa" src="ressource/vanessa2.jpg">
             </nav>
         ';
 
@@ -142,7 +142,7 @@ class viewAcceuil extends view{
     public function echoVanessa() {
         echo '
             <div id="vanessa">
-                <img src="ressource/vanessa.jpg">
+                <img class="imgvanessa" src="ressource/vanessa.jpg">
             </div>
         ';
     }

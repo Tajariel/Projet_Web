@@ -57,7 +57,8 @@ nav {
     border-right: 2px solid rgb(150,160,160);
     background: rgb(45,50,50);
     width: 20%;
-    padding:15px;
+    padding:0px;
+    overflow: hidden;
 }
 
 nav p{
@@ -234,6 +235,17 @@ input[type=text]:focus {
     margin: 0px;
     background: rgba(0,0,0,0);
 }
+
+.imgvanessa{
+    height: 100%;
+    opacity: 10%;
+    object-position: -500px 0px;
+    -webkit-animation: 4s linear 0s infinite alternate move;
+    animation: 20s linear 0s infinite alternate move;
+}
+
+@-webkit-keyframes move { from { object-position: -600px 0px; } to { object-position: -100px 0px; }  }
+@keyframes move { from { object-position: -600px 0px; } to { object-position: -100px 0px; }  }
 /*
     Fin_Classes
  */
@@ -263,17 +275,6 @@ input[type=text]:focus {
 
     overflow: hidden;
 }
-
-#vanessa img{
-    height: 100%;
-    opacity: 10%;
-    object-position: -500px 0px;
-    -webkit-animation: 4s linear 0s infinite alternate move_eye;
-    animation: 20s linear 0s infinite alternate move;
-}
-
-@-webkit-keyframes move { from { object-position: -600px 0px; } to { object-position: -100px 0px; }  }
-@keyframes move { from { object-position: -600px 0px; } to { object-position: -100px 0px; }  }
 
 
 #center_square {
