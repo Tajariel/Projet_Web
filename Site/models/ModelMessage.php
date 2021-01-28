@@ -95,51 +95,54 @@ class ModelMessage extends Model
 
     }
 
-    public function changeEmoji($emoji, $user_id, $id_message)
+    private function incrementEmojiCount($emoji, $id_message, $ammount)
     {
-
-        $increment = $this->hasUsed($id_message, $user_id, $emoji) ? -1 : 1;
-
-
-        if($increment == 1){
-            $querry = 'INSERT INTO emoji VALUES 
-            ('.$user_id.','.$id_message.',\''.$emoji.'\')';
-        } else {
-            $querry = 'DELETE FROM emoji 
-            WHERE id_message = '.$id_message.' 
-            AND emoji_name =\''.$emoji.'\'  
-            AND id_user ='.$user_id;
-        }
-
-        $this->getDB()->beginTransaction();
-
-        $stmt = $this->getDB()->prepare($querry);
-
-        $stmt->execute();
-
-        $querry = 'SELECT * FROM emoji_count 
-            WHERE id_message = '.$id_message.' 
-            AND emoji_name =\''.$emoji.'\'';
-
-        $stmt = $this->getDB()->prepare($querry);
-        $stmt->execute();
-
-        if($stmt->rowcount() == 0)
-        {
-            $querry = 'INSERT INTO emoji_count VALUES 
-            ('.$id_message.',\''.$emoji.'\' ,1)';
-        }
-        else
-        {
-            $querry = 'UPDATE emoji_count 
-                SET quantite = quantite +('.$increment.') 
+        $querry = 'UPDATE emoji_count 
+                SET quantite = quantite +('.$ammount.') 
                 WHERE id_message = '.$id_message.' 
                 AND emoji_name =\''.$emoji.'\'' ;
-        }
 
         $stmt = $this->getDB()->prepare($querry);
 
         $stmt->execute();
+    }
+
+    public function changeEmoji($emoji, $user_id, $id_message)
+    {
+        $this->getDB()->beginTransaction();
+
+        $adding = !$this->hasUsed($id_message, $user_id, $emoji);
+
+        $querry = 'SELECT emoji_name FROM emoji 
+            WHERE id_message = '.$id_message.'
+            AND id_user ='.$user_id;
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        if(!$stmt->rowcount() == 0){
+            $this->incrementEmojiCount($stmt->fetch()['emoji_name'], $id_message, -1);
+        }
+
+        $querry = 'DELETE FROM emoji 
+            WHERE id_message = '.$id_message.' 
+            AND id_user ='.$user_id;
+
+        $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->execute();
+
+        if($adding) {
+            $querry = 'INSERT INTO emoji VALUES 
+                (' . $user_id . ',' . $id_message . ',\'' . $emoji . '\')';
+
+            $stmt = $this->getDB()->prepare($querry);
+
+            $stmt->execute();
+
+            $this->incrementEmojiCount($emoji, $id_message, 1);
+        }
 
         $this->getDB()->commit();
 
