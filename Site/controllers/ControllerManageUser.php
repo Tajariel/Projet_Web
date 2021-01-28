@@ -21,7 +21,7 @@ class ControllerManageUser
             $this->connection($_POST['pseudo'],$_POST['password']);
         }
 
-        elseif ($_POST['action'] == 'creation'){
+        elseif ($_POST['action'] == 'Création'){
             $this->creation($_POST['pseudo'],$_POST['email'],$_POST['password'], $_POST['passwordbis']);
         }
         elseif ($_POST['action'] == 'Création de compte'){

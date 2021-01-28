@@ -36,7 +36,7 @@ abstract class Model
         $que->closeCursor();
     }
 
-    protected function getOne ($table, $obj, $id){
+    protected function getOne ($table, $id){
 
         $var = [];
         $que = $this->getDB()->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');

@@ -28,7 +28,7 @@ class viewCreateUser extends view
 
                 echo '</label></p>
 
-            <p><input class="button" type="submit" name="action" id="soumettre" value="creation"></p>
+            <p><input class="button" type="submit" name="action" id="soumettre" value="Création"></p>
             </form>
         </div>
     </div>';
