@@ -62,6 +62,12 @@ class viewAcceuil extends view{
             ';
     }
 
+    public function chooseFillColor($emoji_name){
+        if(!isset($_SESSION['user'])) return ' ';
+        return ($this->modelMessage->hasUsed($this->IDmessage, $_SESSION['user']['id_user'],$emoji_name))
+                ? 'style="background:rgb(120,55,150)"' : ' ';
+    }
+
     public function echoArticles() {
         $nbElement = 2;
 
@@ -102,19 +108,26 @@ class viewAcceuil extends view{
                     <div class="divemoji">
                         <form method="post" class="redirect">
                             <input type="hidden" name="emoji" value="love"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
-                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1F496;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'love').'</p></button>
+                            <button type="input" name="action" value="changeEmoji" class="emoji" '.$this->chooseFillColor('love').'>
+                            <p>&#x1F496;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'love').'</p></button>
                         </form>
+                        
                         <form method="post" class="redirect">
                             <input type="hidden" name="emoji" value="cute"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
-                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1F63B;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'cute').'</p></button>
+                            <button type="input" name="action" value="changeEmoji" class="emoji" '.$this->chooseFillColor('cute').'>
+                            <p>&#x1F63B;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'cute').'</p></button>
                         </form>
+                        
                         <form method="post" class="redirect"> 
                             <input type="hidden" name="emoji" value="trop_style"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
-                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1FA78;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'trop_style').'</p></button>
+                            <button type="input" name="action" value="changeEmoji" class="emoji"'.$this->chooseFillColor('trop_style').'>
+                            <p>&#x1FA78;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'trop_style').'</p></button>
                         </form>
+                        
                         <form method="post" class="redirect">
                             <input type="hidden" name="emoji" value="swag"><input type="hidden" name="id_message" value='.$this->IDmessage.'>
-                            <button type="input" name="action" value="changeEmoji" class="emoji"><p>&#x1F60E;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'swag').'</p></button>
+                            <button type="input" name="action" value="changeEmoji" class="emoji"'.$this->chooseFillColor('swag').'>
+                            <p>&#x1F60E;</p><p>'.$this->modelMessage->getEmojiCount($this->IDmessage, 'swag').'</p></button>
                         </form>
                     </div>
                 </div>

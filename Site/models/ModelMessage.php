@@ -78,9 +78,12 @@ class ModelMessage extends Model
     public function getEmojiCount($id, $emoji)
     {
 
-        $querry = 'SELECT quantite FROM emoji_count WHERE emoji_name = \''.$emoji.'\' AND id_message = '.$id;
+        $querry = 'SELECT quantite FROM emoji_count WHERE emoji_name = :emoji AND id_message = :id';
 
         $stmt = $this->getDB()->prepare($querry);
+
+        $stmt->bindValue('emoji', $emoji, PDO::PARAM_STR);
+        $stmt->bindValue('id', $id, PDO::PARAM_INT);
 
         $stmt->execute();
 
