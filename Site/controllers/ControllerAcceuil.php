@@ -27,7 +27,7 @@ class ControllerAcceuil
         $this->_view->echoStartPage();
         $this->_view->echoNav();
         $this->_view->echoStartMainContent();
-
+        echo $_SESSION['user']['type'];
         $this->_view->echoMessagePost();
         $this->_view->echoArticles();
 

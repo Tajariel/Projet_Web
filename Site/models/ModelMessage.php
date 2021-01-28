@@ -32,10 +32,9 @@ class ModelMessage extends Model
     }
 
     public function exist($ID) {
-        $querry = 'SELECT id_Message FROM message WHERE id_Message = '.$ID.'';
-
+        $querry = 'SELECT id_Message FROM message WHERE id_Message = :id';
         $stmt = $this->getDB()->prepare($querry);
-
+        $stmt->bindValue('id', $ID);
         $stmt->execute();
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);

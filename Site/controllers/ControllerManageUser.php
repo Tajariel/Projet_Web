@@ -10,21 +10,21 @@ class ControllerManageUser
 
         $this ->_modelUser = new ModelUser();
 
-        if($_POST['action'] == 'deconnexion'){
+        if($_POST['action'] == 'Déconnexion'){
             unset($_SESSION['user']);
 
             $_POST['action'] = 'acceuil';
-            header('Location: index.php');
+            header('Location: /');
         }
 
-        elseif ($_POST['action'] == 'connexion'){
+        elseif ($_POST['action'] == 'Connexion'){
             $this->connection($_POST['pseudo'],$_POST['password']);
         }
 
         elseif ($_POST['action'] == 'creation'){
             $this->creation($_POST['pseudo'],$_POST['email'],$_POST['password'], $_POST['passwordbis']);
         }
-        elseif ($_POST['action'] == 'creationPage'){
+        elseif ($_POST['action'] == 'Création de compte'){
             $this->AccountCreationPage();
         }
 
@@ -76,7 +76,7 @@ class ControllerManageUser
                 $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
 
                 $_POST['action'] = 'creation';
-                header('Location: index.php');
+                header('Location: /');
                 return;
             }
 
@@ -84,7 +84,7 @@ class ControllerManageUser
                 $_SESSION['message'] = 'Pseudo déjà utilisé';
 
                 $_POST['action'] = 'creation';
-                header('Location: index.php');
+                header('Location: /');
                 return;
             }
 
@@ -93,11 +93,11 @@ class ControllerManageUser
         } catch (Exception $e) {
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
             $_POST['action'] = 'creation';
-            header('Location: index.php');
+            header('Location: /');
             return;
         }
         $_POST['action'] = 'acceuil';
-        header('Location: index.php');
+        header('Location: /');
     }
 }
 
