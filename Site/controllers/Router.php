@@ -53,10 +53,16 @@ class Router{
                     case 'Paramètre':
                         $this->_ctrl = new ControllerParams();
                         break;
-                    case  'paramPage':
+                    case 'paramPage':
                         $this->_ctrl = new ControllerParams();
                         break;
-                    case  'Dons':
+                    case 'pseudo':
+                        $this->_ctrl = new ControllerParams();
+                        break;
+                    case 'email':
+                        $this->_ctrl = new ControllerParams();
+                        break;
+                    case 'Dons':
                         $this->_ctrl = new ControllerDons();
                         break;
                     case 'changeEmoji':
