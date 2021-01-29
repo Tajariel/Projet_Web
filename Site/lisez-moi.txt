@@ -48,13 +48,16 @@ __Ensemble des identifiants de connexion :__
     SUPER-ADMIN:
             -Username: Vanestarre
             -Password: Vanestarre
-	-PHPMYADMIN :
 
+	-PHPMYADMIN:
 	        -Host: mysql-mfa.alwaysdata.net
 	        -Username: mfa
 	        -Password: mdp_dtb
 
-	- FTP :
+	- FTP:
 	        -Host: ftp-mfa.alwaysdata.net
 	        -Username: mfa_ssh
 	        -Password: grs_bte
+
+    -LIEN GITHUB:
+            -https://github.com/Tajariel/Projet_Web/graphs/contributors
