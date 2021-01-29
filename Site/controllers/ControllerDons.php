@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Class ControllerDons
  *
@@ -19,8 +17,9 @@ class ControllerDons
     /**
      * ControllerDons constructor.
      */
-    public function __contruct()
+    public function __construct()
     {
+
         $this->Dons();
     }
 
@@ -31,6 +30,7 @@ class ControllerDons
      */
     private function Dons()
     {
+
         $this->_view = new viewDons();
         $titre = 'Dons';
 

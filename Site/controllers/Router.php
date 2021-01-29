@@ -80,7 +80,9 @@ class Router{
                         $this->_ctrl = new ControllerParams();
                         break;
                     case 'Dons':
+
                         $this->_ctrl = new ControllerDons();
+
                         break;
                     case 'changeEmoji':
                         $this->_ctrl = new ControllerAcceuil();
