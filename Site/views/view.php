@@ -10,6 +10,7 @@ abstract class view
     <head>
         <title>'.$title.'</title>
         <link rel="stylesheet" type="text/css" href="views/main.css">
+        <link rel="icon" type="image/png" href="ressource/logo.png"/>
         <meta charset="UTF-8"/>
     </head>
     <body>';
@@ -32,7 +33,12 @@ abstract class view
                         <input type="text" id="search_bar" name="search_bar" placeholder="Rechercher un tag">
                         <button class="button">Rechercher</button>
                     </div>
+                    
                 </div>
+                <div>
+                    <h1>VANESTARRE</h1>
+                </div>
+                
                 <div class="right">
                     <div id="connect">';
 

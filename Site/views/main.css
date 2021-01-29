@@ -107,6 +107,12 @@ input[type=text]:focus {
     border-color: rgba(150,150,150,0.2);
 }
 
+header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: blueviolet;
+}
+
 /*
     Fin_General
  */
@@ -238,7 +244,7 @@ input[type=text]:focus {
 
 .imgvanessa{
     height: 100%;
-    opacity: 10%;
+    opacity: 20%;
     object-position: -500px 0px;
     -webkit-animation: 4s linear 0s infinite alternate move;
     animation: 20s linear 0s infinite alternate move;
