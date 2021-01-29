@@ -1,10 +1,28 @@
 <?php
 
+/**
+ * Class ControllerAcceuil
+ *
+ * Controller for Acceuil page
+ *
+ * @author Gaetan PUPET
+ * @author Manuel FURTER-ALPHAND
+ * @author Ugo LARSONNEUR
+ */
 class ControllerAcceuil
 {
+    /**
+     * @var ModelMessage
+     */
     private $_modelMessage;
+    /**
+     * @var View
+     */
     private $_view;
 
+    /**
+     * ControllerAcceuil constructor.
+     */
     public function __construct()
     {
         $this->_modelMessage = new ModelMessage();
@@ -19,6 +37,11 @@ class ControllerAcceuil
         $this->Acceuil();
     }
 
+    /**
+     * @function sendPost
+     *
+     * send a message
+     */
     private function sendPost() {
         if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
         {
@@ -29,7 +52,12 @@ class ControllerAcceuil
 
     }
 
-   public function Acceuil()
+    /**
+     * @function Acceuil
+     *
+     * display visual thing
+     */
+    public function Acceuil()
     {
 
 
