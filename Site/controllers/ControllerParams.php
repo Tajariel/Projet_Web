@@ -1,11 +1,28 @@
 <?php
 
 
+/**
+ * Class ControllerParams
+ *
+ * Controller for Parametre page.
+ *
+ * @author Gaetan PUPET
+ * @author Marc AMBAUD
+ */
 class ControllerParams
 {
+    /**
+     * @var ModelUser
+     */
     private $_modelUser;
+    /**
+     * @var view
+     */
     private $_view;
 
+    /**
+     * ControllerParams constructor.
+     */
     public function __construct()
     {
         $this->_modelUser = new ModelUser();
@@ -26,6 +43,11 @@ class ControllerParams
         }
     }
 
+    /**
+     * @function modifyElements
+     *
+     * Change the number of post in the acceuil page if asked.
+     */
     private function modifyElements() {
         if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN" && isset($_POST['nbElement']))
         {
@@ -37,6 +59,11 @@ class ControllerParams
         }
     }
 
+    /**
+     * @funtion Params
+     *
+     * Display the parametre page.
+     */
     public function Params()
     {
         $this->modifyElements();
