@@ -27,9 +27,11 @@ class ModelMessage extends Model
         {
             $this->getDB()->beginTransaction();
 
-            $querry = 'INSERT INTO message(date,contenu) VALUES (CURRENT_DATE,\''.$message.'\')';
+            $querry = 'INSERT INTO message(date,contenu) VALUES (CURRENT_DATE, :message)';
 
             $stmt = $this->getDB()->prepare($querry);
+
+            $stmt->bindvalue('message', $message);
 
             $result = $stmt->execute();
 
