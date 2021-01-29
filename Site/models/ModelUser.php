@@ -75,6 +75,9 @@ class ModelUser extends Model
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
         $stmt->bindValue('password', $hashedPass, PDO::PARAM_STR);
 
+
+        exit( $stmt);
+
         $this->getDB()->beginTransaction();
         $stmt->execute();
         $this->getDB()->commit();
