@@ -6,7 +6,7 @@
  *
  * Controller for Parametre page.
  *
- * @author Gaetan PUPET
+ * @author Gaëtan PUPET
  * @author Marc AMBAUD
  */
 class ControllerParams
