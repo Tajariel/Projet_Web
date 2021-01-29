@@ -36,7 +36,9 @@ class ControllerDons
 
         $this->_view->echoHead($titre);
         $this->_view->echoHeader();
+        $this->_view->echoStartPage();
         $this->_view->echoPaypal();
+        $this->_view->echoEndPage();
         $this->_view->echoTail();
     }
 }

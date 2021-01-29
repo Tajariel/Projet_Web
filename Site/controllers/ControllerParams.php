@@ -76,7 +76,9 @@ class ControllerParams
 
         $this->_view->echoHead($titre);
         $this->_view->echoHeader();
+        $this->_view->echoStartPage();
         $this->_view->echoParams();
+        $this->_view->echoEndPage();
         $this->_view->echoTail();
     }
 }

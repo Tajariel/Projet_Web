@@ -60,8 +60,9 @@ class ControllerManageUser
         $this->_view = new viewCreateUser();
         $this->_view->echoHead('Création de compte');
         $this->_view->echoHeader();
-
+        $this->_view->echoStartPage();
         $this->_view->echoCreateForm();
+        $this->_view->echoEndPage();
         $this->_view->echoTail();
     }
 
