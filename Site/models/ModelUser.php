@@ -1,14 +1,23 @@
 <?php
 
+/**
+ * Class ModelUser
+ *
+ * Class to manage the users in the database
+ *
+ * @author Ugo LARSONNEUR
+ */
 class ModelUser extends Model
 {
 
-    public function getUsers()
-    {
-        $this->getDB();
-        return $this->getAll('user', 'User');
-    }
-
+    /**
+     * @function getUser
+     *
+     * Return the id, the pseudo, and the email of a user from the database with a pseudo.
+     *
+     * @param $pseudo
+     * @return $stmt->fetch()
+     */
     public function getUser($pseudo)
     {
         $querry = 'SELECT id_user, pseudo, email, type FROM user WHERE pseudo = :psd';
@@ -26,6 +35,15 @@ class ModelUser extends Model
         return $stmt->fetch();
     }
 
+    /**
+     * @function checkPassword
+     *
+     * Return true or false if the given password correspond to the password in the database.
+     *
+     * @param $id
+     * @param $password
+     * @return bool
+     */
     public function checkPassword($id, $password)
     {
         $querry = 'SELECT mdp FROM user WHERE id_user = :psd';
@@ -44,6 +62,16 @@ class ModelUser extends Model
         return password_verify($password, $stmt->fetch()['mdp']);
     }
 
+    /**
+     * @function changeParam
+     *
+     * Change a user's value like its pseudo, its email, or its password, if the right password is given.
+     *
+     * @param $id
+     * @param $column
+     * @param $val
+     * @param $password
+     */
     public function changeParam($id, $column, $val, $password)
     {
         if(!$this->checkPassword($id, $password)){
@@ -63,6 +91,16 @@ class ModelUser extends Model
         $this->getDB()->commit();
     }
 
+
+    /**
+     * @function createUser
+     *
+     * With a pseudo, an email, and a password, create a user in the database.
+     *
+     * @param $pseudo
+     * @param $email
+     * @param $password
+     */
     public function createUser($pseudo, $email, $password)
     {
 
