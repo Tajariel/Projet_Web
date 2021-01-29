@@ -7,17 +7,19 @@ include_once 'ControllerAcceuil.php';
  *Redirect and autoload classes;
  *
  * @author Manuel FURTER--ALPHAND
- * @author Gaëtan PUPET
  */
 class Router{
 
     /**
-     * @var
+     * @var ctrl
      */
     private $_ctrl;
 
     /**
-     * @function
+     * @function routeReq
+     *
+     *
+     *Redirect and autoload classes;
      */
     public function routeReq()
     {
