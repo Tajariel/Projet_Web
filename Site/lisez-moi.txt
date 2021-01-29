@@ -39,6 +39,8 @@ __Configuration logicielle recommandée :__
 Config minimale: un grille-pain avec un display graphique. C'est un site web avec peu de média et pas de JS
 Config maximale: Un super ordinateur de la nasa, Il faut voir grand. PAS COMPATIBLE avec ordinateur quantique...
 
+Sécurité:
+
 
 __Ensemble des identifiants de connexion :__
 
