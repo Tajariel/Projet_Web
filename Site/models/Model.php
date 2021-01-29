@@ -27,12 +27,11 @@ abstract class Model
 
     protected function getOne ($table, $id){
 
-        $var = [];
         $que = $this->getDB()->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');
         $que->bindValue('id', $id);
         $que->execute();
         $data = $que->fetch(PDO::FETCH_ASSOC);
-        //$var[] = new $obj($data);
+
         return $data;
     }
 

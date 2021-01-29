@@ -1,8 +1,21 @@
 <?php
 
+/**
+ * Class ModelMessage
+ *
+ * @author Ugo LARSONNEUR
+ * @author Gaëtan PUPET
+ */
 class ModelMessage extends Model
 {
 
+    /**
+     * @function getMaxID
+     *
+     * Return the highest ID.
+     *
+     * @return stmt fetch
+     */
     public function getMaxID(){
 
         $querry = 'SELECT MAX(id_Message) FROM message';
@@ -17,6 +30,14 @@ class ModelMessage extends Model
 
     }
 
+    /**
+     * @function message
+     *
+     * Insert a message in the dataBase.
+     *
+     * @param $message
+     * @return result or false
+     */
     public function sendMessage($message) {
 
         if(strlen($message) > 50){
@@ -41,6 +62,14 @@ class ModelMessage extends Model
         }
     }
 
+    /**
+     * @function exist
+     *
+     * Verify if the message exist.
+     *
+     * @param $ID
+     * @return bool
+     */
     public function exist($ID) {
         $querry = 'SELECT id_Message FROM message WHERE id_Message = :id';
         $stmt = $this->getDB()->prepare($querry);
@@ -56,13 +85,28 @@ class ModelMessage extends Model
     }
 
 
-
-
+    /**
+     * @function getFromID
+     *
+     * Get a message with an precise ID.
+     *
+     * @param $id
+     * @return the result of getOne
+     */
     public function getFromID($id){
         $this->getDB();
         return $this->getOne('message',$id);
     }
 
+    /**
+     *@function getEmojiCount
+     *
+     * Get the number of emoji for one message.
+     *
+     * @param $id
+     * @param $emoji
+     * @return stmt fetch
+     */
     public function getEmojiCount($id, $emoji)
     {
 
@@ -83,6 +127,15 @@ class ModelMessage extends Model
 
     }
 
+    /**
+     * @function getEmojiCount
+     *
+     * Increment the Emoji count on one messages
+     *
+     * @param $emoji
+     * @param $id_message
+     * @param $ammount
+     */
     private function incrementEmojiCount($emoji, $id_message, $ammount)
     {
         $querry = 'SELECT * FROM emoji_count
@@ -115,6 +168,15 @@ class ModelMessage extends Model
         }
     }
 
+    /**
+     * @function changeEmoji
+     *
+     * Switch the emoji uped.
+     *
+     * @param $emoji
+     * @param $user_id
+     * @param $id_message
+     */
     public function changeEmoji($emoji, $user_id, $id_message)
     {
         $this->getDB()->beginTransaction();
@@ -156,6 +218,16 @@ class ModelMessage extends Model
 
     }
 
+    /**
+     * @function hasUsed
+     *
+     * Verify if an emoji is used.
+     *
+     * @param $id_message
+     * @param $id_user
+     * @param $emoji
+     * @return bool
+     */
     public function hasUsed($id_message, $id_user, $emoji)
     {
 
