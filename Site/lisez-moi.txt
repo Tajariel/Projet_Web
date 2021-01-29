@@ -39,9 +39,15 @@ __Configuration logicielle recommandée :__
 Config minimale: un grille-pain avec un display graphique. C'est un site web avec peu de média et pas de JS
 Config maximale: Un super ordinateur de la nasa, Il faut voir grand. PAS COMPATIBLE avec ordinateur quantique...
 
+Sécurité:
+Les mots de passe sont haché menue.
+Les entrées du PDO sont protégees avec les bind value.
 
 __Ensemble des identifiants de connexion :__
 
+    SUPER-ADMIN:
+            -Username: Vanestarre
+            -Password: Vanestarre
 	-PHPMYADMIN :
 
 	        -Host: mysql-mfa.alwaysdata.net
