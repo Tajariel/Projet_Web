@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 28, 2021 at 06:22 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Host: mysql-mfa.alwaysdata.net
+-- Generation Time: Jan 29, 2021 at 06:52 AM
+-- Server version: 10.5.8-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `simp-land_db`
+-- Database: `mfa_simp-land_db`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +31,33 @@ SET time_zone = "+00:00";
 CREATE TABLE `emoji` (
   `id_user` int(11) NOT NULL,
   `id_message` int(11) NOT NULL,
-  `emoji_name` varchar(1) NOT NULL
+  `emoji_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `emoji`
+--
+
+INSERT INTO `emoji` (`id_user`, `id_message`, `emoji_name`) VALUES
+(1, 34, 'cute'),
+(1, 52, 'cute'),
+(1, 55, 'love'),
+(1, 58, 'love'),
+(1, 59, 'love'),
+(1, 60, 'trop_style'),
+(1, 61, 'cute'),
+(1, 62, 'trop_style'),
+(1, 63, 'swag'),
+(1, 64, 'cute'),
+(1, 65, 'cute'),
+(27, 52, 'love'),
+(29, 54, 'trop_style'),
+(29, 55, 'trop_style'),
+(30, 59, 'swag'),
+(30, 60, 'trop_style'),
+(30, 61, 'cute'),
+(31, 59, 'trop_style'),
+(31, 60, 'love');
 
 -- --------------------------------------------------------
 
@@ -45,6 +70,48 @@ CREATE TABLE `emoji_count` (
   `emoji_name` varchar(20) NOT NULL,
   `quantite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `emoji_count`
+--
+
+INSERT INTO `emoji_count` (`id_message`, `emoji_name`, `quantite`) VALUES
+(34, 'cute', 1),
+(52, 'cute', 1),
+(52, 'love', 1),
+(52, 'swag', 0),
+(52, 'trop_style', 0),
+(54, 'trop_style', 1),
+(55, 'cute', 0),
+(55, 'love', 1),
+(55, 'swag', 0),
+(55, 'trop_style', 1),
+(58, 'love', 1),
+(59, 'cute', 0),
+(59, 'love', 1),
+(59, 'swag', 1),
+(59, 'trop_style', 1),
+(60, 'cute', 0),
+(60, 'love', 1),
+(60, 'swag', 0),
+(60, 'trop_style', 2),
+(61, 'cute', 2),
+(61, 'love', 0),
+(61, 'swag', 0),
+(61, 'trop_style', 0),
+(62, 'cute', 0),
+(62, 'love', 0),
+(62, 'swag', 0),
+(62, 'trop_style', 1),
+(63, 'cute', 0),
+(63, 'love', 0),
+(63, 'swag', 1),
+(64, 'cute', 1),
+(64, 'love', 0),
+(64, 'swag', 0),
+(64, 'trop_style', 0),
+(65, 'cute', 1),
+(65, 'trop_style', 0);
 
 -- --------------------------------------------------------
 
@@ -64,20 +131,13 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id_Message`, `date`, `contenu`, `photo`) VALUES
-(1, '2021-01-20', 'bonjour sava', ''),
-(2, '2021-01-27', 'HAHAHAH', NULL),
-(3, '2021-01-27', 'sgf', NULL),
-(4, '2021-01-27', 'b vc', NULL),
-(5, '2021-01-27', 'b vc', NULL),
-(6, '2021-01-27', '55555555555555555555555555555555555555555555555555', NULL),
-(7, '2021-01-27', '55555555555555555555555555555555555555555555555555', NULL),
-(8, '2021-01-27', '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', NULL),
-(9, '2021-01-27', 'mmm', NULL),
-(10, '2021-01-27', 'ooo', NULL),
-(11, '2021-01-27', 'ooo', NULL),
-(12, '2021-01-27', 'ooo', NULL),
-(13, '2021-01-27', 'ooo', NULL),
-(14, '2021-01-27', 'ooo', NULL);
+(52, '2021-01-29', 'Salut les Vanefans! Bienvenu sur mon site!', NULL),
+(54, '2021-01-29', 'Comment ça va ??????????????', NULL),
+(55, '2021-01-29', 'Salut les coupaings ', NULL),
+(58, '2021-01-29', 'Salut mes amis', NULL),
+(59, '2021-01-29', 'Rendez vous sur nordvpn.com :))', NULL),
+(60, '2021-01-29', 'J aime le pudding', NULL),
+(61, '2021-01-29', 'Bonjour la famille', NULL);
 
 -- --------------------------------------------------------
 
@@ -99,11 +159,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `pseudo`, `email`, `mdp`, `type`) VALUES
 (1, 'Vanestarre', 'Vanestarre', '$2y$10$gFFpc6nwiN8YdVWT2foKY.I5WRgg./EOVfoTfU2VgYMetMqoruF6i', 'SUPER_ADMIN'),
-(15, 'zz', 'zz', '$2y$10$b9TMlrGzo6AK.WaMHh5gNOXwHyeWkAXZ/OV623K9/3EOjR0sXfsdO', 'MEMBER'),
-(16, 'ss', 'ss', '$2y$10$pIrx0Yln46QbvRvqGLWfNeJoTTQKseMAMPkquonUs2XNnIW8PZIaC', 'MEMBER'),
-(17, 'gg', 'gg', '$2y$10$uPjA9llSAcdFD7GcdwWGgOzu/wJmnSLp3pzlWp5ZTPprmhT4cpKQe', 'MEMBER'),
-(18, 'dd', 'dd', '$2y$10$6/MK0e2cpu1g7ZtrxcWK5.fR9cuWwnXPiFNF5nPd6FRJQsiaUzGZ6', 'MEMBER'),
-(19, '11', '11', '$2y$10$Wq.fSKkBH//a2YhlzXwQM.6F3XhCHN.V10td/rjzE/QD.8YjW2hAq', 'MEMBER');
+(27, 'Vanefandu83', 'Vanefandu83@gmail.com', '$2y$10$hcJhzMmeEJDXfsOSMcOge.LyglpwNZLHO3bmd2PRGG4r8blaQW2Ee', 'MEMBER'),
+(30, 'Manuel', 'Manuel', '$2y$10$qxWPTNjPD.PSVkS/TtS0..gZIsgZjZtqUJhPkBo.xrJnZcS.faoPu', 'MEMBER'),
+(31, 'Ugo', 'ugo.larsonneur0@gmail.com', '$2y$10$j6Qy68NkFEF38057Tvvfuu8/IsuyMvcvwMNxg3PTXdVP1KXzxCdwq', 'MEMBER'),
+(32, 'Gaetan', 'gaetan.trinca-pupet@etu.univ-amu.fr', '$2y$10$asTe6V7HkcbSFGAlLEiTQuiRBOQvOYI02jnSmrvbEMJdW8gNv2vAa', 'MEMBER');
 
 --
 -- Indexes for dumped tables
@@ -141,13 +200,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_Message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_Message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
