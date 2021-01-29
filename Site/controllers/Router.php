@@ -46,7 +46,7 @@ class Router{
             });
 
 
-
+            // Checks what Controller to use, and so what page to display
             if(isset($_POST['action']))
             {
 
