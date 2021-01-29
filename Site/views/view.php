@@ -27,7 +27,7 @@ abstract class view
                         </form>
                     </div>
                     <div id="dons">
-                        <form class="redirect" method="post"><button class="button" type="submit" name="action" value="acceuil">Dons</button></form>
+                        <form class="redirect" method="post"><button class="button" type="submit" name="action" value="Dons">Dons</button></form>
                     </div>
                     <div id="search">
                         <input type="text" id="search_bar" name="search_bar" placeholder="Rechercher un tag">
