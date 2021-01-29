@@ -1,10 +1,25 @@
 <?php
 
+/**
+ * Class ControllerManageUser
+ *
+ * Controller for user action.
+ * @author Ugo LARSONNEUR
+ * @author Manuel FURTER-ALPHAND
+ *
+ *
+ */
 class ControllerManageUser
 {
+    /**
+     * @var ModelUser
+     */
     private $_modelUser;
-    private $_viewCreateUser;
 
+
+    /**
+     * ControllerManageUser constructor.
+     */
     public function __construct()
     {
 
@@ -34,6 +49,11 @@ class ControllerManageUser
         }
     }
 
+    /**
+     * @function AccountCreationPage
+     *
+     * Display the account creation page.
+     */
     public function AccountCreationPage()
     {
 
@@ -45,6 +65,13 @@ class ControllerManageUser
         $this->_view->echoTail();
     }
 
+    /**
+     * @function connetion
+     *
+     * Initiate the user connection.
+     * @param $pseudo
+     * @param $password
+     */
     public function connection($pseudo, $password){
 
         try {
@@ -70,6 +97,16 @@ class ControllerManageUser
 
     }
 
+    /**
+     * @function creation
+     *
+     * Initiate the account creation.
+     *
+     * @param $pseudo
+     * @param $email
+     * @param $password
+     * @param $passwordbis
+     */
     public function creation($pseudo, $email, $password, $passwordbis){
         try {
 
