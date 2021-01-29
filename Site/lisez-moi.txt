@@ -40,10 +40,14 @@ Config minimale: un grille-pain avec un display graphique. C'est un site web ave
 Config maximale: Un super ordinateur de la nasa, Il faut voir grand. PAS COMPATIBLE avec ordinateur quantique...
 
 Sécurité:
-
+Les mots de passe sont haché menue.
+Les entrées du PDO sont protégees avec les bind value.
 
 __Ensemble des identifiants de connexion :__
 
+    SUPER-ADMIN:
+            -Username: Vanestarre
+            -Password: Vanestarre
 	-PHPMYADMIN :
 
 	        -Host: mysql-mfa.alwaysdata.net
