@@ -77,7 +77,7 @@ class ControllerManageUser
             if ($password != $passwordbis) {
                 $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
 
-                $_POST['action'] = 'Création';
+                $_POST['action'] = 'Création de compte';
                 header('Location: /');
                 return;
             }
@@ -85,7 +85,7 @@ class ControllerManageUser
             if ($this->_modelUser->getUser($pseudo)) {
                 $_SESSION['message'] = 'Pseudo déjà utilisé';
 
-                $_POST['action'] = 'Création';
+                $_POST['action'] = 'Création de compte';
                 header('Location: /');
                 return;
             }
@@ -95,7 +95,7 @@ class ControllerManageUser
         } catch (Exception $e) {
 
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
-            $_POST['action'] = 'Création';
+            $_POST['action'] = 'Création de compte';
             header('Location: /');
             return;
         }
