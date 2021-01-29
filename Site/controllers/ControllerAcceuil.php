@@ -14,7 +14,19 @@ class ControllerAcceuil
                 $this->_modelMessage->changeEmoji($_POST['emoji'], $_SESSION['user']['id_user'], $_POST['id_message']);
         }
 
+
+
         $this->Acceuil();
+    }
+
+    private function sendPost() {
+        if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
+        {
+            $this->_modelMessage->sendMessage($_POST['vanessa_post']);
+
+            header('Location:'.$_SERVER['HTTP_REFERER']);
+        }
+
     }
 
    public function Acceuil()
@@ -22,8 +34,8 @@ class ControllerAcceuil
 
 
         $this->_view = new viewAcceuil($this->_modelMessage);
-        $this->_view->sendPost();
         $titre = 'Acceuil';
+        $this->sendPost();
         $this->_view->echoHead($titre);
         $this->_view->echoHeader();
         $this->_view->echoStartPage();

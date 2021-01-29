@@ -2,16 +2,7 @@
 
 class viewParams extends view
 {
-    public function modifyElements() {
-        if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN" && isset($_POST['nbElement']))
-        {
-            $file = 'ressource/nbarticle';
 
-            $file = fopen($file,"w");
-            fwrite($file,$_POST['nbElement']);
-            fclose($file);
-        }
-    }
 
     public function echoParams()
     {

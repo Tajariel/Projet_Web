@@ -26,14 +26,24 @@ class ControllerParams
         }
     }
 
+    private function modifyElements() {
+        if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN" && isset($_POST['nbElement']))
+        {
+            $file = 'ressource/nbarticle';
+
+            $file = fopen($file,"w");
+            fwrite($file,$_POST['nbElement']);
+            fclose($file);
+        }
+    }
+
     public function Params()
     {
+        $this->modifyElements();
         $this->_modelUser = new ModelUser();
 
 
         $this->_view = new viewParams();
-
-        $this->_view->modifyElements();
 
         $titre = 'Paramètre';
 
