@@ -3,11 +3,6 @@
 class ModelUser extends Model
 {
 
-    public function getUsers()
-    {
-        $this->getDB();
-        return $this->getAll('user', 'User');
-    }
 
     public function getUser($pseudo)
     {
@@ -76,7 +71,7 @@ class ModelUser extends Model
         $stmt->bindValue('password', $hashedPass, PDO::PARAM_STR);
 
 
-        exit( $stmt);
+
 
         $this->getDB()->beginTransaction();
         $stmt->execute();

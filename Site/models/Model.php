@@ -23,18 +23,7 @@ abstract class Model
 
     }
 
-    protected function getAll ($table, $obj){
-        $var = [];
-        $que = $this->getDB()->prepare('SELECT * FROM '.$table.' ORDER BY id_Message desc');
-        $que->execute();
-        while($data = $que->fetch(PDO::FETCH_ASSOC))
-        {
-            $var[] = new $obj($data);
-        }
 
-        return $var;
-        $que->closeCursor();
-    }
 
     protected function getOne ($table, $id){
 
