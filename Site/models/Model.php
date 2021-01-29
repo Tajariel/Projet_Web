@@ -1,11 +1,28 @@
 <?php
 
+/**
+ * Class Model
+ *
+ * Class to connect to the data base
+ *
+ * @author Manuel FURTER-ALPHAND
+ */
 abstract class Model
 {
 
+    /**
+     * @var db
+     */
     protected static $_db;
 
+
     // INSTANCIE CONNEXION DB
+
+    /**
+     * @function setDB
+     *
+     * Setup the connection to the data base
+     */
     private function setDB()
     {
         $dsn = 'mysql:host=mysql-mfa.alwaysdata.net;dbname=mfa_simp-land_db';
@@ -15,7 +32,16 @@ abstract class Model
         self::$_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
+
     //RECUP CONNEXION DB
+
+    /**
+     * @function getDB
+     *
+     * @return $db
+     *
+     * Return the set data base if connected successfully
+     */
     protected function getDB(){
         if(self::$_db == null)
             $this->setDB();
@@ -24,15 +50,22 @@ abstract class Model
     }
 
 
-
+    /**
+     * @function getOne
+     *
+     * @param $table
+     * @param $id
+     * @return $que->fetch(PDO::FETCH_ASSOC)
+     *
+     * Return the tuple of the corresponding id from the database
+     */
     protected function getOne ($table, $id){
 
-        $var = [];
         $que = $this->getDB()->prepare('SELECT * FROM '.$table.' WHERE id_Message = :id');
         $que->bindValue('id', $id);
         $que->execute();
         $data = $que->fetch(PDO::FETCH_ASSOC);
-        //$var[] = new $obj($data);
+
         return $data;
     }
 
