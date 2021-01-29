@@ -38,8 +38,9 @@ class ControllerManageUser
     {
 
         $this->_view = new viewCreateUser();
-        $this->_view->echoHead('Creation de compte');
+        $this->_view->echoHead('Création de compte');
         $this->_view->echoHeader();
+
         $this->_view->echoCreateForm();
         $this->_view->echoTail();
     }
@@ -72,10 +73,11 @@ class ControllerManageUser
     public function creation($pseudo, $email, $password, $passwordbis){
         try {
 
+
             if ($password != $passwordbis) {
                 $_SESSION['message'] = 'Les mot de passe ne correspondent pas';
 
-                $_POST['action'] = 'creation';
+                $_POST['action'] = 'Création';
                 header('Location: /');
                 return;
             }
@@ -83,7 +85,7 @@ class ControllerManageUser
             if ($this->_modelUser->getUser($pseudo)) {
                 $_SESSION['message'] = 'Pseudo déjà utilisé';
 
-                $_POST['action'] = 'creation';
+                $_POST['action'] = 'Création';
                 header('Location: /');
                 return;
             }
@@ -91,8 +93,9 @@ class ControllerManageUser
             $this->_modelUser->createUser($pseudo, $email, $password);
 
         } catch (Exception $e) {
+
             $_SESSION['message'] = 'Erreur : '. $e->getMessage(). PHP_EOL;
-            $_POST['action'] = 'creation';
+            $_POST['action'] = 'Création';
             header('Location: /');
             return;
         }

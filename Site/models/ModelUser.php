@@ -34,6 +34,7 @@ class ModelUser extends Model
 
         $stmt->bindValue('psd', $id, PDO::PARAM_STR);
 
+
         $stmt->execute();
 
         if($stmt->rowCount() == 0) return false;
@@ -64,17 +65,20 @@ class ModelUser extends Model
 
     public function createUser($pseudo, $email, $password)
     {
+
         $querry = 'INSERT INTO user (pseudo, email, mdp, type)  VALUES (:pseudo, :email, :password, \'MEMBER\')';
         $stmt = $this->getDB()->prepare($querry);
 
         $stmt->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
         $stmt->bindValue('email', $email, PDO::PARAM_STR);
+
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
         $stmt->bindValue('password', $hashedPass, PDO::PARAM_STR);
 
         $this->getDB()->beginTransaction();
         $stmt->execute();
         $this->getDB()->commit();
+
     }
 
 }

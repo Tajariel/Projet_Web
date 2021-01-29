@@ -30,7 +30,10 @@ class ControllerParams
     {
         $this->_modelUser = new ModelUser();
 
+
         $this->_view = new viewParams();
+
+        $this->_view->modifyElements();
 
         $titre = 'Paramètre';
 

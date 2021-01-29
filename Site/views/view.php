@@ -100,7 +100,7 @@ abstract class view
 
     public function echoEndPage()
     {
-        empty($_POST);
+        
         echo '
             </div>
         ';
