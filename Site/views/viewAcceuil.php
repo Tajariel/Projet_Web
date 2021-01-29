@@ -13,6 +13,17 @@ class viewAcceuil extends view{
     }
 
 
+    public function sendPost() {
+        if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
+        {
+            $this->modelMessage->sendMessage($_POST['vanessa_post']);
+
+            header('Location:'.$_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+
     public function echoNav() {
         echo '
             <nav>
@@ -37,14 +48,6 @@ class viewAcceuil extends view{
     }
 
     public function echoMessagePost() {
-
-
-        if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
-        {
-            $this->modelMessage->sendMessage($_POST['vanessa_post']);
-
-            unset($_POST['vanessa_post']);
-        }
 
         if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN") // if vanessa
             echo '

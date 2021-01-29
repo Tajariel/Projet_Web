@@ -22,6 +22,7 @@ class ControllerAcceuil
 
 
         $this->_view = new viewAcceuil($this->_modelMessage);
+        $this->_view->sendPost();
         $titre = 'Acceuil';
         $this->_view->echoHead($titre);
         $this->_view->echoHeader();
