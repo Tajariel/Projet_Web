@@ -25,8 +25,8 @@ abstract class Model
      */
     private function setDB()
     {
-        $dsn = 'mysql:host=localhost;dbname=simp-land_db';
-        self::$_db = new PDO($dsn, 'root', '');
+        $dsn = 'mysql:host=mysql-mfa.alwaysdata.net;dbname=mfa_simp-land_db';
+        self::$_db = new PDO($dsn, 'mfa', 'mdp_dtb');
 
 
         self::$_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);

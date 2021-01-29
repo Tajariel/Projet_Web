@@ -1,5 +1,5 @@
 __Nom d'équipe :__
- Les goblins du derrière
+ Les goblins du derrière.
 
 
 __Membres :__
@@ -15,24 +15,40 @@ http://mfa.alwaysdata.net/
 
 __Présentation concise du projet réalisé :__
 
-Lors de ce projet, nous devions réalisé un site web pour Vanestarre, lui permettant de partager sa vie à ses 5 fans !
-Pour ce faire, nous avons utilisé différent outils pour simplifier notre travail, comme Git, ou un serveur discord pour faciliter la communication et le partage dans le groupe.
-Malheuresement, nous n'avons pas pu réaliser toute les fonctionnalités demandé, un peu par manque de temps, mais avant tout par un manque de compétence dans le domaine, malgrè tout, nous avons esssayé de faire en sorte que ce qui a été implémenté fonctionne correctement, afin de rendre le site le propre possible.
+Lors de ce projet, nous avons du fabriquer un site web pour Vanestarre, lui permettant de partager sa vie à ses 5 fans !
+Pour ce faire, nous avons utilisé différents outils pour simplifier notre travail, comme Git et un serveur discord pour faciliter la communication et le partage dans le groupe.
+Malheuresement, nous n'avons pas pu réaliser toutes les fonctionnalités demandées, à cause du mauvaise gestion du planning et d'une sous-estimation du travail demandé.
+Malgrès tout, nous avons esssayé de faire en sorte que ce qui a été implémenté fonctionne correctement, afin de rendre le site le propre possible.
 
 
 
 __Choix techniques :__
 
+Nous avons utilisé les outils suivants:
+    -PHP
+    -MySQL
+    -PHPMyAdmin
+    -HTML
+    -CSS
 
+La structure du site est une structure MVC à base d'un routeur,
+il est appelé depuis l'index et redirige vers d'autre controllers, qui eux coordone l'affichage..
 
 __Configuration logicielle recommandée :__
 
-Avoir un PC ?
-Le site n'est pas lourd, et même si nous ne sommes pas sûrs, on pense qu'il fonctionne correctement sur la plupart des navigateurs et systèmes.
-
+Config minimale: un grille-pain avec un display graphique. C'est un site web avec peu de média et pas de JS
+Config maximale: Un super ordinateur de la nasa, Il faut voir grand. PAS COMPATIBLE avec ordinateur quantique...
 
 
 __Ensemble des identifiants de connexion :__
-	- 
-	- 
-	- 
+
+	-PHPMYADMIN :
+
+	        -Host: mysql-mfa.alwaysdata.net
+	        -Username: mfa
+	        -Password: mdp_dtb
+
+	- FTP :
+	        -Host: ftp-mfa.alwaysdata.net
+	        -Username: mfa_ssh
+	        -Password: grs_bte
