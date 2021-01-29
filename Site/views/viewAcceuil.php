@@ -72,7 +72,15 @@ class viewAcceuil extends view{
     }
 
     public function echoArticles() {
-        $nbElement = 2;
+
+        $file = 'ressource/nbarticle';
+        if(!($file = fopen($file, 'r')))
+        {
+            echo 'erreur de lecture';
+            exit();
+        }
+        $nbElement = fgets($file,255);
+        fclose($file);
 
         for ($i = 0 ; $i < $nbElement ; $i++)
         {

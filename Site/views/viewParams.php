@@ -2,7 +2,16 @@
 
 class viewParams extends view
 {
+    public function modifyElements() {
+        if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN" && isset($_POST['nbElement']))
+        {
+            $file = 'ressource/nbarticle';
 
+            $file = fopen($file,"w");
+            fwrite($file,$_POST['nbElement']);
+            fclose($file);
+        }
+    }
 
     public function echoParams()
     {
@@ -28,9 +37,18 @@ class viewParams extends view
                     <br/>
                     <p><label for="passwordbis">Mot de passe actuel :</label></br>
                         <input class="intext" type="password" name="old_password" placeholder="Mot de passe" required></p>
-    
-                <p></p>
-                </form>
+                </form>';
+
+        if(isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
+            echo '
+            <form method="post">
+                <p><label for="passwordbis">Changer nombre de message à l\'écran :<input class="intext" type="text" name="nbElement" placeholder="Nombre d\'éléments"><button class="button" type="submit" name="action" value="Paramètre">Submit</button></label></p>
+            </form>
+            
+        ';
+
+        echo '
+                
             </div>
         </div>';
     }
