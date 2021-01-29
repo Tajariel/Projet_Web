@@ -23,11 +23,11 @@ abstract class view
                 <div class="left">
                     <div id="logo_site">
                         <form class="redirect" method="post">
-                            <button class="redirection" type="submit" name="action" value="create"><img id="logo" src="ressource/logo.png" alt="Logo"></button>
+                            <button class="redirection" type="submit" name="action" value="acceuil"><img id="logo" src="ressource/logo.png" alt="Logo"></button>
                         </form>
                     </div>
                     <div id="dons">
-                        <a href="dons.php"><button class="button">Dons</button></a>
+                        <form class="redirect" method="post"><button class="button" type="submit" name="action" value="acceuil">Dons</button></form>
                     </div>
                     <div id="search">
                         <input type="text" id="search_bar" name="search_bar" placeholder="Rechercher un tag">
