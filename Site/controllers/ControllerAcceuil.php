@@ -3,7 +3,7 @@
 /**
  * Class ControllerAcceuil
  *
- * Controller for Acceuil page
+ * Controller for Acceuil page.
  *
  * @author Gaetan PUPET
  * @author Manuel FURTER-ALPHAND
@@ -40,7 +40,7 @@ class ControllerAcceuil
     /**
      * @function sendPost
      *
-     * send a message
+     * Initiate the sending of a message.
      */
     private function sendPost() {
         if(isset($_POST['Envoyer']) && isset($_SESSION['user']['type']) && $_SESSION['user']['type'] == "SUPER_ADMIN")
@@ -55,7 +55,7 @@ class ControllerAcceuil
     /**
      * @function Acceuil
      *
-     * display visual thing
+     * Display the Acceuil page
      */
     public function Acceuil()
     {
